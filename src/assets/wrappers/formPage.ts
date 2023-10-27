@@ -6,6 +6,7 @@ const Wrapper = styled.section`
   background: var(--white);
   padding: 3rem 2rem 4rem;
   box-shadow: var(--shadow-2);
+  max-width: var(--max-width);
   h3 {
     margin-top: 0;
   }
@@ -113,6 +114,12 @@ const Wrapper = styled.section`
     .form-center button {
       margin-top: 0;
     }
+  }
+
+  .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    /* border: 1px solid var(--grey-2); */
+    display: flex;
+    align-items: baseline;
   }
 `;
 

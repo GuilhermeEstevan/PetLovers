@@ -1,15 +1,16 @@
 import FormRow from "../components/forms/FormRow";
 import Wrapper from "../assets/wrappers/formPage";
 import FormRowSelect from "../components/forms/FormRowSelect";
-import FormCalendar from "../components/forms/FormCalendar";
 import FormImgUpload from "../components/forms/FormImgUpload";
+import NewFormCalendar from "../components/forms/NewFormCalendar";
+import { Dayjs } from "dayjs";
 import { useState } from "react";
 
 const AddPetPage = () => {
   const isEditing = false;
   const handleJobInput = () => {};
   const tempOptions = ["Macho", "Fêmea"];
-  const [date, setDate] = useState(new Date());
+  const [birthday, setBirthday] = useState<Dayjs | null>(null);
 
   return (
     <Wrapper>
@@ -51,8 +52,13 @@ const AddPetPage = () => {
             handleChange={handleJobInput}
             labelText="cor"
           />
-          <FormCalendar setDate={setDate} />
+
+          <NewFormCalendar
+            setDate={setBirthday}
+            labelText={"Data de Nascimento"}
+          />
           <FormImgUpload />
+
           <div className="btn-container">
             <button type="button" className="btn btn-block clear-btn">
               Limpar

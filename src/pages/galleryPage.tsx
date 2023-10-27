@@ -4,8 +4,10 @@ import GalleryContainer from "../components/GalleryContainer";
 const GalleryPage = () => {
   return (
     <>
-      <AddPhotoContainer />
-      <GalleryContainer />
+      <div className="flex-page">
+        <AddPhotoContainer />
+        <GalleryContainer />
+      </div>
     </>
   );
 };

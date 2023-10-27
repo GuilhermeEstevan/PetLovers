@@ -2,6 +2,8 @@ import Wrapper from "../assets/wrappers/formPage";
 import FormCalendar from "./forms/FormCalendar";
 import FormRow from "./forms/FormRow";
 import { useState } from "react";
+import NewFormCalendar from "./forms/NewFormCalendar";
+import { Dayjs } from "dayjs";
 
 const PetCardForm = () => {
   const handleJobInput = (e: any) => {
@@ -10,7 +12,7 @@ const PetCardForm = () => {
 
   const [procedure, setProcedure] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Dayjs | null>(null);
 
   return (
     <Wrapper>
@@ -31,7 +33,7 @@ const PetCardForm = () => {
             handleChange={handleJobInput}
             labelText="Descrição"
           />
-          <FormCalendar setDate={setDate} />
+          <NewFormCalendar setDate={setDate} labelText={"Data"} />
           <div className="btn-container">
             <button type="button" className="btn btn-block clear-btn">
               Limpar

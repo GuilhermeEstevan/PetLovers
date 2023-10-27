@@ -1,61 +1,90 @@
 import { useState } from "react";
 import Wrapper from "../assets/wrappers/formPage";
 import FormRow from "../components/forms/FormRow";
+import { useUserContext } from "../context/userContext";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
-  const isLoading = false;
+  const { isLoading, user, updateUser } = useUserContext();
 
-  const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const handleChange = (e: any) => {};
+  const [userData, setUserData] = useState({
+    name: user?.name || "",
+    email: user?.email || "",
+    lastName: user?.lastName || "",
+    phone: user?.phone || "",
+  });
 
-  const [phone, setPhone] = useState("");
-  const handlePhone = (e: any) => {
-    // Limita o campo de telefone a 11 dígitos
-    const inputValue = e.target.value.slice(0, 11);
-    // Remove qualquer caractere não numérico
-    const numericValue = inputValue.replace(/\D/g, "");
-    setPhone(numericValue);
+  const handleChange = (e: any) => {
+    const name = e.target.name;
+    let value = e.target.value;
+
+    if (name === "phone") {
+      // Limita o campo de telefone a 11 dígitos
+      value = value.slice(0, 11);
+      // Remove qualquer caractere não numérico
+      value = value.replace(/\D/g, "");
+    }
+
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const { name, lastName, email, phone } = userData;
+
+    if (!name || !lastName || !email || !phone) {
+      toast.error("preencha todos campos");
+      return;
+    }
+
+    updateUser({ name, lastName, email, phone });
   };
 
   return (
     <Wrapper>
       <h3>Perfil</h3>
-      <div className="form-center">
+      <form className="form-center">
         <FormRow
           type="text"
           name="name"
-          value={name}
+          value={userData.name}
           handleChange={handleChange}
           labelText="Nome"
         />
         <FormRow
           type="text"
           name="lastName"
-          value={lastname}
+          value={userData.lastName}
           handleChange={handleChange}
           labelText="Sobrenome"
         />
         <FormRow
           type="text"
           name="email"
-          value={email}
+          value={userData.email}
           labelText="E-mail"
           handleChange={handleChange}
         />
         <FormRow
           type="tel"
           name="phone"
-          value={phone}
+          value={userData.phone}
           labelText="Telefone"
-          handleChange={handlePhone}
+          handleChange={handleChange}
           placeholder="Digite o telefone (apenas números)"
         />
-        <button type="submit" className="btn btn-block" disabled={isLoading}>
+        <button
+          type="submit"
+          className="btn btn-block"
+          onClick={handleSubmit}
+          disabled={isLoading}
+        >
           {isLoading ? "Salvando..." : "Salvar"}
         </button>
-      </div>
+      </form>
     </Wrapper>
   );
 };

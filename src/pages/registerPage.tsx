@@ -3,11 +3,12 @@ import Wrapper from "../assets/wrappers/registerPage";
 import Logo from "../components/Logo";
 import FormRow from "../components/forms/FormRow";
 import { MdPets } from "react-icons/md";
+import { useUserContext } from "../context/userContext";
 
 const RegisterPage = () => {
   const isLoading = false;
   const [isMember, setIsMember] = useState(true);
-  const handleSubmit = () => {};
+
   const toggleMember = () => {
     setIsMember(!isMember);
   };
@@ -25,6 +26,18 @@ const RegisterPage = () => {
     setPassword(e.target.value);
   };
 
+  const { registerUser, loginUser } = useUserContext();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    if (!isMember) {
+      registerUser({ email, name, password });
+      return;
+    }
+
+    loginUser({ email, password });
+  };
   return (
     <Wrapper className="full-page">
       <nav>
