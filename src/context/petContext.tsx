@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import {
   TAllPets,
+  TCreatePetData,
   TPetContext,
   TPetContextProps,
 } from "../interface/petInterface";
@@ -17,6 +18,16 @@ export const PetProvider = ({ children }: TPetContextProps) => {
     pets: [],
     numOfPages: 1,
     totalPets: 0,
+  });
+
+  const [pet, setPet] = useState<TCreatePetData>({
+    birthday: new Date(),
+    breed: "",
+    color: "",
+    gender: "",
+    name: "",
+    photo: "",
+    species: "",
   });
 
   const getAllPets = async () => {
@@ -41,8 +52,28 @@ export const PetProvider = ({ children }: TPetContextProps) => {
     }
   };
 
+  const createPet = async (data: any) => {
+    try {
+      setIsLoading(true);
+      const response = await customFetch.post("/pets", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response);
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <PetContext.Provider value={{ isLoading, getAllPets, allPets }}>
+    <PetContext.Provider
+      value={{ isLoading, getAllPets, allPets, createPet, pet, setPet }}
+    >
       {children}
     </PetContext.Provider>
   );

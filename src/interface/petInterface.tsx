@@ -1,7 +1,12 @@
+import { SetStateAction } from "react";
+
 export type TPetContext = {
   isLoading: boolean;
   getAllPets: () => void;
   allPets: TAllPets;
+  createPet: (data: any) => void;
+  pet: TCreatePetData;
+  setPet: React.Dispatch<SetStateAction<TCreatePetData>>;
 };
 
 export type TPetContextProps = {
@@ -28,4 +33,14 @@ export type TPet = {
   species: string;
   updatedAt: string;
   _id: string;
+};
+
+export type TCreatePetData = {
+  birthday: Date;
+  breed: string;
+  color: string;
+  gender: string;
+  name: string;
+  photo: any;
+  species: string;
 };

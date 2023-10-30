@@ -25,6 +25,9 @@ const FormRowSelect = ({
         onChange={handleChange}
         className="form-select"
       >
+        <option value="" disabled>
+          Selecione uma opção
+        </option>
         {list.map((option, index) => {
           return (
             <option key={index} value={option} className="select-option">

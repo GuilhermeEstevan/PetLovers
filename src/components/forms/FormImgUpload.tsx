@@ -1,10 +1,20 @@
 import { useState } from "react";
 
-const FormImgUpload = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+type TFormImgProps = {
+  setImg: (file: File) => void;
+};
+
+const FormImgUpload = ({ setImg }: TFormImgProps) => {
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const handleImageChange = (e: any) => {
     const file = e.target.files[0];
     setSelectedImage(file);
+
+    const formData = new FormData();
+    formData.append("photo", file);
+    setImg(file);
+    console.log(file);
+    console.log(typeof file);
   };
 
   return (

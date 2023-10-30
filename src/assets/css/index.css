@@ -166,7 +166,6 @@ p {
   margin: 0.5rem;
 }
 
-
 /* section */
 .section {
   width: 90vw;
@@ -288,22 +287,28 @@ loading {
   letter-spacing: var(--letterSpacing);
 }
 .form-input,
-.form-textarea,
-.form-select {
+.form-textarea {
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 1.5rem 0.75rem;
   border-radius: var(--borderRadius);
   background: var(--backgroundColor);
   border: 1px solid var(--grey-2);
 }
-.form-input,
-.form-select,
-.btn-block {
-  height: 35px;
-}
+
 .form-select {
-  text-transform: capitalize;
+  width: 100%;
+  /* font-size: 0.3rem; */
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--borderRadius);
+  background: var(--backgroundColor);
+  border: 1px solid var(--grey-2);
+  height: 50px; /* Ajuste o tamanho conforme necessário */
+}
+
+.form-input,
+.btn-block {
+  height: 50px;
 }
 .form-row {
   margin-bottom: 1rem;
@@ -322,7 +327,7 @@ loading {
   text-transform: capitalize;
 }
 
-.flex-page{
+.flex-page {
   display: flex;
   flex-direction: column;
   align-items: center;
