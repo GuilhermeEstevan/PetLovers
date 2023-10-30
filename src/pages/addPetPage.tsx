@@ -32,7 +32,7 @@ const AddPetPage = () => {
     }
   };
 
-  const handleImgUpload = (file: any) => {
+  const handleImgUpload = async (file: any) => {
     console.log(file);
     setPet({
       ...pet,
@@ -48,7 +48,7 @@ const AddPetPage = () => {
 
   return (
     <Wrapper>
-      <form className="form">
+      <form className="form" encType="multipart/form-data">
         <h3>{isEditing ? "Editar Cadastro do Pet" : "Adcionar Novo Pet"}</h3>
         <div className="form-center">
           <FormRow

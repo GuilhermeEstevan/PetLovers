@@ -1,20 +1,44 @@
 import { useState } from "react";
 
 type TFormImgProps = {
-  setImg: (file: File) => void;
+  setImg: (file: any) => void;
 };
 
 const FormImgUpload = ({ setImg }: TFormImgProps) => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const handleImageChange = (e: any) => {
-    const file = e.target.files[0];
-    setSelectedImage(file);
+  const [fileInputState, setFileInputState] = useState<any>("");
+  const [previewSource, setPreviewSource] = useState<any>("");
+  const [selectedFile, setSelectedFile] = useState<any>();
 
-    const formData = new FormData();
-    formData.append("photo", file);
-    setImg(file);
-    console.log(file);
-    console.log(typeof file);
+  const previewFile = (file: any) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const handleFileInputChange = (e: any) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+
+    //
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImg(reader.result);
+    };
+  };
+
+  const handleSubmitFile = (e: any) => {
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      setImg(reader.result);
+    };
   };
 
   return (
@@ -26,11 +50,12 @@ const FormImgUpload = ({ setImg }: TFormImgProps) => {
         type="file"
         accept="image/*"
         id="petImage"
-        onChange={handleImageChange}
+        name="petImage"
+        onChange={handleFileInputChange}
       />
-      {selectedImage && (
+      {previewSource && (
         <img
-          src={URL.createObjectURL(selectedImage)}
+          src={previewSource}
           alt="Imagem do pet"
           className="pet-image-preview"
         />
