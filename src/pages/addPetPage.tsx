@@ -32,11 +32,10 @@ const AddPetPage = () => {
     }
   };
 
-  const handleImgUpload = async (file: any) => {
-    console.log(file);
+  const handleImgUpload = async (secureUrl: string) => {
     setPet({
       ...pet,
-      photo: file,
+      photo: secureUrl,
     });
   };
 
@@ -91,7 +90,7 @@ const AddPetPage = () => {
             setDate={handleDateChange}
             labelText={"Data de Nascimento"}
           />
-          <FormImgUpload setImg={handleImgUpload} />
+          <FormImgUpload setSecureUrl={handleImgUpload} />
 
           <div className="btn-container">
             <button type="button" className="btn btn-block clear-btn">

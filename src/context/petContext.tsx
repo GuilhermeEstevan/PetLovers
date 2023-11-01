@@ -53,6 +53,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   };
 
   const createPet = async (data: any) => {
+    console.log(data);
+    
     try {
       setIsLoading(true);
       const response = await customFetch.post("/pets", data, {

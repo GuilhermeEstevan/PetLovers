@@ -28,7 +28,11 @@ const NewFormCalendar = ({ setDate, labelText }: TFormCalendar) => {
       <label>{labelText}</label>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker value={value} onChange={handleChangeDate} />
+          <DatePicker
+            format="DD-MM-YYYY"
+            value={value}
+            onChange={handleChangeDate}
+          />
         </DemoContainer>
       </LocalizationProvider>
     </div>
