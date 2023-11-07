@@ -10,13 +10,13 @@ const Wrapper = styled.section`
   }
   .photos {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     margin: -0.5rem;
   }
 
   @media (min-width: 800px) {
     .photos {
-      justify-content: center; /* Centralizar as imagens horizontalmente */
       gap: 1rem;
     }
 

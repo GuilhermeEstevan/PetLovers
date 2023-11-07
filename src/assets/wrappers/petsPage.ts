@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.section`
   margin-top: 4rem;
@@ -16,7 +16,7 @@ const Wrapper = styled.section`
   @media (min-width: 992px) {
     .pets {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr ;
       gap: 2rem;
     }
   }
@@ -24,9 +24,9 @@ const Wrapper = styled.section`
   @media (min-width: 1600px) {
     .pets {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
     }
   }
-`
-export default Wrapper
+`;
+export default Wrapper;

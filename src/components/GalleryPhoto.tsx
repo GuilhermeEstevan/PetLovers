@@ -1,6 +1,10 @@
 import Wrapper from "../assets/wrappers/galleryPhoto";
 
-const GalleryPhoto = ({ image }: any) => {
+type TGalleryPhoto = {
+  image: string;
+};
+
+const GalleryPhoto = ({ image }: TGalleryPhoto) => {
   return (
     <Wrapper>
       <div className="photo">

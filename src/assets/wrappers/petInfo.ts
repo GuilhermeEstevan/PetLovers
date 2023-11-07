@@ -4,9 +4,10 @@ const Wrapper = styled.div`
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
+  font-size: 1.2rem;
 
   .icon {
-    font-size: 2rem;
+    font-size: 1rem;
     margin-right: 1rem;
     display: flex;
     align-items: center;

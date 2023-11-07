@@ -10,7 +10,7 @@ import {
 
 const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false);
-  const { toggleSidebar, isSidebarOpen } = useUserContext();
+  const { toggleSidebar, isSidebarOpen, user } = useUserContext();
 
   return (
     <Wrapper>
@@ -39,7 +39,7 @@ const Navbar = () => {
             }}
           >
             <FaUserCircle />
-            {"user"}
+            {user?.name}
             <FaCaretDown />
           </button>
           <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>

@@ -13,10 +13,11 @@ type TPetMain = {
   photo: string;
   birthday: Date;
   gender: string;
+  id: string;
 };
 
 const Pet = (data: TPetMain) => {
-  const { name, breed, birthday, color, photo, gender } = data;
+  const { name, breed, birthday, color, photo, gender, id } = data;
 
   // IDADE DO PET
   const calculateAge = (birthday: Date): any => {
@@ -56,15 +57,18 @@ const Pet = (data: TPetMain) => {
       </header>
       <div className="content">
         <div className="content-center">
-          <PetInfo icon={<img src={candleIcon} />} text={age} />
+          <PetInfo icon={<img src={candleIcon} />} text={`${age} anos`} />
           <PetInfo icon={<img src={colorPalette} />} text={color} />
           <PetInfo icon={<img src={genderIcon} />} text={gender} />
         </div>
         <footer className="actions">
-          <Link to="/petCard" className="btn info-btn">
-            Informações
+          {/* <Link to={`/petCard/${id}`} className="btn info-btn">
+            Perfil
+          </Link> */}
+          <Link to={`/petCard/${id}`} className="btn info-btn">
+            Carteirinha
           </Link>
-          <Link to="/gallery" className="btn gallery-btn">
+          <Link to={`/gallery/${id}`} className="btn gallery-btn">
             <span className="galery-icon">
               <IoMdImages />
             </span>

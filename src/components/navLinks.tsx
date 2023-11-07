@@ -8,7 +8,7 @@ type TLinks = {
   icon: React.ReactNode;
 };
 type TToggleSidebar = {
-  toggleSidebar: () => void;
+  toggleSidebar?: () => void;
 };
 
 const NavLinks = ({ toggleSidebar }: TToggleSidebar) => {

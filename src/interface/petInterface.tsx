@@ -7,6 +7,20 @@ export type TPetContext = {
   createPet: (data: any) => void;
   pet: TCreatePetData;
   setPet: React.Dispatch<SetStateAction<TCreatePetData>>;
+  createPetCard: (data: TCreatePetCardData, petId: string) => void;
+  getSinglePet: (petId: string) => void;
+  singlePet: TPet | null;
+  deletePetCard: (petId: string, petCardId: string) => void;
+  editPetCard: (
+    petId: string,
+    petCardId: string,
+    data: TCreatePetCardData
+  ) => void;
+  isEditing: boolean;
+  setIsEditing: React.Dispatch<SetStateAction<boolean>>;
+  editingCardInfo: TPetCardData | null;
+  SetEditingCardInfo: React.Dispatch<SetStateAction<TPetCardData | null>>;
+  addGalleryPhoto: (petid: string, image: TaddGalleryPhotoData) => void;
 };
 
 export type TPetContextProps = {
@@ -25,10 +39,10 @@ export type TPet = {
   color: string;
   createdAt: Date;
   createdBy: string;
-  gallery: any;
+  gallery: TGallery[];
   gender: string;
   name: string;
-  petCars: any;
+  petCards: TPetCardData[];
   photo: string;
   species: string;
   updatedAt: string;
@@ -41,6 +55,29 @@ export type TCreatePetData = {
   color: string;
   gender: string;
   name: string;
-  photo: any;
+  photo: string;
   species: string;
+};
+
+export type TCreatePetCardData = {
+  procedure: string;
+  description: string;
+  date: Date;
+};
+
+export type TPetCardData = {
+  procedure: string;
+  description: string;
+  date: string;
+  _id: string;
+};
+
+export type TaddGalleryPhotoData = {
+  image: string;
+};
+
+export type TGallery = {
+  image: string;
+  updatedAt: Date;
+  _id: string;
 };

@@ -18,7 +18,8 @@ const Wrapper = styled.article`
       max-height: 100%;
       border-radius: 10px;
       display: block;
-      object-fit: cover;
+      object-position: center;
+      object-fit: contain;
       margin: 10px; /* Espaço entre a imagem e a moldura */
       box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.7)
     }

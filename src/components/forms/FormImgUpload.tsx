@@ -1,14 +1,11 @@
 import { useState } from "react";
-import axios from "axios";
 
 type TFormImgProps = {
-  setSecureUrl: (secureUrl: string) => void;
+  setFile: (file: File) => void;
 };
 
-const FormImgUpload = ({ setSecureUrl }: TFormImgProps) => {
-  // const [fileInputState, setFileInputState] = useState("");
+const FormImgUpload = ({ setFile }: TFormImgProps) => {
   const [previewSource, setPreviewSource] = useState<string>("");
-  const cloudName = import.meta.env.VITE_CLOUD_NAME;
 
   const previewFile = (file: any) => {
     const reader = new FileReader();
@@ -20,30 +17,24 @@ const FormImgUpload = ({ setSecureUrl }: TFormImgProps) => {
     };
   };
 
+  const validadeImage = (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      return false;
+    }
+    const maxSize = 3 * 1024 * 1024;
+    if (file.size > maxSize) {
+      return false;
+    }
+
+    return true;
+  };
   const handleFileInputChange = (e: any) => {
     const file = e.target.files[0];
-    if (file) {
-      // setFileInputState(e.target.value);
+    console.log(file);
+
+    if (file && validadeImage(file)) {
       previewFile(file);
-      uploadImageToCloudinary(file);
-    }
-  };
-
-  const uploadImageToCloudinary = async (file: any) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("folder", "PetLovers");
-    formData.append("upload_preset", "PetLovers-images");
-
-    try {
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
-        formData
-      );
-      console.log(response);
-      setSecureUrl(response.data.secure_url);
-    } catch (error) {
-      console.log(error);
+      setFile(file);
     }
   };
 

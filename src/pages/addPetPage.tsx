@@ -4,11 +4,15 @@ import FormRowSelect from "../components/forms/FormRowSelect";
 import FormImgUpload from "../components/forms/FormImgUpload";
 import NewFormCalendar from "../components/forms/NewFormCalendar";
 import { usePetContext } from "../context/petContext";
+import { useState } from "react";
+import axios from "axios";
+import { TCreatePetData } from "../interface/petInterface";
+const cloudName = import.meta.env.VITE_CLOUD_NAME;
 
 const AddPetPage = () => {
   const isEditing = false;
-  const tempOptions = ["Macho", "Fêmea"];
-
+  const genderOptions = ["macho", "fêmea"];
+  const [file, setFile] = useState<File | null>(null);
   const { pet, setPet, createPet } = usePetContext();
   const { breed, color, name, species, gender } = pet;
 
@@ -32,17 +36,33 @@ const AddPetPage = () => {
     }
   };
 
-  const handleImgUpload = async (secureUrl: string) => {
-    setPet({
-      ...pet,
-      photo: secureUrl,
-    });
-  };
-
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    createPet(pet);
+    const secureUrl = await uploadImageToCloudinary(file);
+    const createPetData: TCreatePetData = {
+      ...pet,
+      photo: secureUrl,
+    };
+    createPet(createPetData);
+  };
+
+  const uploadImageToCloudinary = async (file: any) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("folder", "PetLovers");
+    formData.append("upload_preset", "PetLovers-images");
+
+    try {
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
+        formData
+      );
+      console.log(response);
+      return response.data.secure_url;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -75,7 +95,7 @@ const AddPetPage = () => {
             name="gender"
             value={gender}
             handleChange={handleChange}
-            list={tempOptions}
+            list={genderOptions}
             labelText="sexo"
           />
           <FormRow
@@ -87,10 +107,11 @@ const AddPetPage = () => {
           />
 
           <NewFormCalendar
+            date={pet.birthday}
             setDate={handleDateChange}
             labelText={"Data de Nascimento"}
           />
-          <FormImgUpload setSecureUrl={handleImgUpload} />
+          <FormImgUpload setFile={setFile} />
 
           <div className="btn-container">
             <button type="button" className="btn btn-block clear-btn">

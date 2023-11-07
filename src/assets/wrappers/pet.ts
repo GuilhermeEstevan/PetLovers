@@ -1,28 +1,29 @@
 import styled from "styled-components";
 
 const Wrapper = styled.article`
-  font-family: "Pacifico";
+  font-family: "Roboto";
   background: var(--white);
   border-radius: var(--borderRadius);
   display: grid;
   grid-template-rows: 1fr auto;
   box-shadow: var(--shadow-2);
+  /* height: 30rem; */
 
   header {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--grey-1);
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
     h5 {
       letter-spacing: 0;
     }
   }
   .pet-image {
-    width: 130px;
-    height: 130px;
+    width: 190px;
+    height: 190px;
     overflow: hidden;
-    border-radius: 50%;
+    border-radius: 20%;
     img {
       width: 100%;
       height: 100%;
@@ -31,7 +32,7 @@ const Wrapper = styled.article`
   }
   .info {
     h3 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
