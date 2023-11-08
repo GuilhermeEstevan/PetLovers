@@ -2,6 +2,7 @@ import Logo from "../Logo";
 import Wrapper from "../../assets/wrappers/BigSidebar";
 import NavLinks from "../navLinks";
 import { useUserContext } from "../../context/userContext";
+import bg from "../../assets/images/dog.png";
 
 const BigSidebar = () => {
   const { isSidebarOpen } = useUserContext();
@@ -10,16 +11,15 @@ const BigSidebar = () => {
     <Wrapper>
       <div
         className={
-          isSidebarOpen
-            ? "sidebar-container"
-            : "sidebar-container show-sidebar"
+          isSidebarOpen ? "sidebar-container" : "sidebar-container show-sidebar"
         }
       >
         <div className="content">
-          <header>
-            <Logo />
-          </header>
+          <header>{/* <Logo /> */}</header>
           <NavLinks />
+        </div>
+        <div className="sidebar-img">
+          <img src={bg} alt="" />
         </div>
       </div>
     </Wrapper>

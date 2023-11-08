@@ -7,27 +7,31 @@ const Wrapper = styled.article`
   display: grid;
   grid-template-rows: 1fr auto;
   box-shadow: var(--shadow-2);
+  /* width: 50%; */
+  margin:  0 auto;
   /* height: 30rem; */
 
   header {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--grey-1);
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     align-items: center;
     h5 {
       letter-spacing: 0;
     }
   }
   .pet-image {
-    width: 190px;
-    height: 190px;
+    width: 130px;
+    height: 130px;
     overflow: hidden;
-    border-radius: 20%;
+    border-radius: 50%; 
     img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      /* height: 100%; */
+      object-fit: cover; 
+      object-position: center;
+      /* border-radius: 50%;  */
     }
   }
   .info {

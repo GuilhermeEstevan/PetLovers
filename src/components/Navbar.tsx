@@ -3,24 +3,17 @@ import { FaUserCircle, FaCaretDown } from "react-icons/fa";
 import { useState } from "react";
 import { useUserContext } from "../context/userContext";
 import { MdPets } from "react-icons/md";
-import {
-  TbLayoutSidebarLeftExpand,
-  TbLayoutSidebarLeftCollapse,
-} from "react-icons/tb";
+import { BiMenuAltLeft } from "react-icons/bi";
 
 const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false);
-  const { toggleSidebar, isSidebarOpen, user } = useUserContext();
+  const { toggleSidebar, user } = useUserContext();
 
   return (
     <Wrapper>
       <div className="nav-center">
         <button className="toggle-btn" onClick={toggleSidebar}>
-          {isSidebarOpen ? (
-            <TbLayoutSidebarLeftExpand />
-          ) : (
-            <TbLayoutSidebarLeftCollapse />
-          )}
+          <BiMenuAltLeft />
         </button>
         <div>
           <h3 className="logo-text">

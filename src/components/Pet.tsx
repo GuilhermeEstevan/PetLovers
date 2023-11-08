@@ -47,18 +47,18 @@ const Pet = (data: TPetMain) => {
   return (
     <Wrapper>
       <header>
-        <div className="pet-image">
-          <img src={photo} alt="pet image" />
-        </div>
         <div className="info">
           <h3>{name}</h3>
           <p>{breed}</p>
+        </div>
+        <div className="pet-image">
+          <img src={photo} alt="pet image" />
         </div>
       </header>
       <div className="content">
         <div className="content-center">
           <PetInfo icon={<img src={candleIcon} />} text={`${age} anos`} />
-          <PetInfo icon={<img src={colorPalette} />} text={color} />
+          {/* <PetInfo icon={<img src={colorPalette} />} text={color} /> */}
           <PetInfo icon={<img src={genderIcon} />} text={gender} />
         </div>
         <footer className="actions">

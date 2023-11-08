@@ -22,6 +22,10 @@ const PetsPage = () => {
 
   return (
     <Wrapper>
+      <div className="welcome-section">
+        <h3>Reuna seus pets num só lugar!</h3>
+      </div>
+
       <div className="pets">
         {pets?.map((pet) => {
           const { name, breed, color, photo, birthday, gender, _id } = pet;

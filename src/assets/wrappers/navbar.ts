@@ -7,6 +7,8 @@ const Wrapper = styled.nav`
   justify-content: center;
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.1);
   z-index: 2;
+  background: var(--primary-3);
+
   .logo {
     display: flex;
     align-items: center;
@@ -21,14 +23,13 @@ const Wrapper = styled.nav`
   .toggle-btn {
     background: transparent;
     border-color: transparent;
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     color: var(--primary-6);
     cursor: pointer;
     display: flex;
     align-items: center;
-   
   }
-  background: var(--primary-2);
+
   .btn-container {
     position: relative;
   }
@@ -41,7 +42,6 @@ const Wrapper = styled.nav`
     background-color: var(--primary-5);
     box-shadow: var(--shadow-2);
   }
-
 
   .dropdown {
     position: absolute;
@@ -70,7 +70,6 @@ const Wrapper = styled.nav`
     display: none;
     margin: 0;
   }
- 
 
   @media (min-width: 992px) {
     position: sticky;
@@ -87,20 +86,20 @@ const Wrapper = styled.nav`
       align-items: center;
     }
     h3 {
-    font-weight: 800;
-    span {
-      color: var(--primary-7);
+      font-weight: 800;
+      span {
+        color: var(--primary-7);
+      }
     }
-  }
-  .pawn-icon {
-    font-size: 1.5rem;
-    margin-left: 4px;
-  }
+    .pawn-icon {
+      font-size: 1.5rem;
+      margin-left: 4px;
+    }
 
-.toggle-btn{
-  margin-left: -3rem;
-}
-
+    .toggle-btn {
+      margin-right: 6rem;
+      margin-left: -3rem;
+    }
   }
 `;
 export default Wrapper;
