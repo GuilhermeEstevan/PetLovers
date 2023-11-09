@@ -1,6 +1,7 @@
 import Wrapper from "../assets/wrappers/pet";
 import { Link } from "react-router-dom";
 import { IoMdImages } from "react-icons/io";
+import { BsEyeFill } from "react-icons/bs";
 import PetInfo from "./PetInfo";
 import candleIcon from "../assets/images/birthday-cake-svgrepo-com.svg";
 import colorPalette from "../assets/images/paint-palette-art-svgrepo-com.svg";
@@ -47,19 +48,22 @@ const Pet = (data: TPetMain) => {
   return (
     <Wrapper>
       <header>
-        <div className="info">
-          <h3>{name}</h3>
-          <p>{breed}</p>
-        </div>
-        <div className="pet-image">
+        <Link to="pet" className="pet-image">
           <img src={photo} alt="pet image" />
-        </div>
+          <span className="eye-icon">
+            <BsEyeFill />
+          </span>
+        </Link>
       </header>
       <div className="content">
         <div className="content-center">
-          <PetInfo icon={<img src={candleIcon} />} text={`${age} anos`} />
+          <div className="info">
+            <h3>{name}</h3>
+            <p>{breed}</p>
+          </div>
+          {/* <PetInfo icon={<img src={candleIcon} />} text={`${age} anos`} /> */}
           {/* <PetInfo icon={<img src={colorPalette} />} text={color} /> */}
-          <PetInfo icon={<img src={genderIcon} />} text={gender} />
+          {/* <PetInfo icon={<img src={genderIcon} />} text={gender} /> */}
         </div>
         <footer className="actions">
           {/* <Link to={`/petCard/${id}`} className="btn info-btn">

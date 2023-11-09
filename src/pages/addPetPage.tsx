@@ -113,6 +113,7 @@ const AddPetPage = () => {
           />
           <FormImgUpload setFile={setFile} />
 
+        </div>
           <div className="btn-container">
             <button type="button" className="btn btn-block clear-btn">
               Limpar
@@ -125,7 +126,6 @@ const AddPetPage = () => {
               {isEditing ? "Editar" : "Criar"}
             </button>
           </div>
-        </div>
       </form>
     </Wrapper>
   );

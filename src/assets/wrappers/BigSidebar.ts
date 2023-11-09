@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.aside`
   display: none;
+
   @media (min-width: 992px) {
     display: block;
     box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
@@ -11,11 +12,8 @@ const Wrapper = styled.aside`
       min-height: 100vh;
       height: 100%;
       width: 250px;
+      margin-left: -250px;
       transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      position: relative;
     }
     .content {
       position: sticky;
@@ -23,6 +21,11 @@ const Wrapper = styled.aside`
     }
     .show-sidebar {
       margin-left: 0;
+
+      .sidebar-img {
+        display: block;
+        transform: translateX(0);
+      }
     }
     header {
       height: 6rem;
@@ -66,12 +69,12 @@ const Wrapper = styled.aside`
     }
 
     .sidebar-img {
-
       position: fixed; 
-      bottom: 0; /* Posiciona a imagem na parte inferior */
-      left: 0; /* Você pode ajustar o posicionamento horizontal conforme necessário */
-      width: 100%; /* Define a largura como 100% para ocupar toda a largura da container */
-  
+      bottom: 0;
+      left: 0;
+      margin-bottom: -1rem;
+      transition: var(--transition);
+      transform: translateX(-250px);
 
       img {
         width: 300px;

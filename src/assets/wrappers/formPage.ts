@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 const Wrapper = styled.section`
   border-radius: var(--borderRadius);
-  width: 100%;
+  width: 90%;
   background: var(--white);
   padding: 3rem 2rem 4rem;
   box-shadow: var(--shadow-2);
   max-width: var(--max-width);
+  margin: 0 auto;
   h3 {
     margin-top: 0;
   }
@@ -19,11 +20,18 @@ const Wrapper = styled.section`
     width: 100%;
   }
   .form-row {
-    margin-bottom: 0;
+    width: 15rem;
+    margin: 0;
   }
+  .form-select{
+    width: 14rem;
+  }
+
   .form-center {
+    margin-top: 3rem;
     display: grid;
-    row-gap: 0.5rem;
+    row-gap: 1.5rem;
+    width: 10rem
   }
 
   .form-center button {
@@ -37,6 +45,7 @@ const Wrapper = styled.section`
     column-gap: 1rem;
     align-self: flex-end;
     margin-top: 0.5rem;
+    max-width: 32rem;
     button {
       height: 35px;
     }
@@ -48,8 +57,8 @@ const Wrapper = styled.section`
     background: var(--grey-5);
   }
   .pet-image-preview {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     overflow: hidden;
     border-radius: 50%;
     margin: 1rem;
@@ -76,8 +85,10 @@ const Wrapper = styled.section`
   .image-row {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    margin-left: -1rem;
+    margin-bottom: 2rem;
   }
 
   .addPhoto-center {
@@ -91,7 +102,6 @@ const Wrapper = styled.section`
     .form-center {
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      column-gap: 1rem;
     }
     .btn-container {
       margin-top: 0;
@@ -109,7 +119,8 @@ const Wrapper = styled.section`
   }
   @media (min-width: 1120px) {
     .form-center {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
     .form-center button {
       margin-top: 0;
@@ -120,6 +131,15 @@ const Wrapper = styled.section`
     /* border: 1px solid var(--grey-2); */
     display: flex;
     align-items: baseline;
+  }
+
+  .calendar{
+    width: 14rem;
+    margin-top: -1.7rem;
+  }
+
+  .calendar-label{
+    font-size: 0.8rem;
   }
 `;
 

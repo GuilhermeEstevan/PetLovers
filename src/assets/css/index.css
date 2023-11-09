@@ -194,6 +194,7 @@ p {
 }
 .loading-center {
   margin: 0 auto;
+  margin-top: 20rem;
 }
 /* title */
 
@@ -290,6 +291,7 @@ p {
   margin-bottom: 0.5rem;
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
+  text-align: center;
 }
 .form-input,
 .form-textarea {
@@ -301,16 +303,15 @@ p {
   border: 1px solid var(--grey-2);
 }
 
-.form-select {
+/* .form-select {
   width: 100%;
-  /* font-size: 0.3rem; */
   padding: 0.5rem 0.75rem;
   border-radius: var(--borderRadius);
   background: var(--backgroundColor);
   border: 1px solid var(--grey-2);
-  height: 50px; /* Ajuste o tamanho conforme necessário */
+  height: 50px; 
   text-transform: capitalize;
-}
+} */
 
 .form-input,
 .btn-block {

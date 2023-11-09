@@ -1,3 +1,6 @@
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+
 type TFormRow = {
   type: string;
   name: string;
@@ -16,20 +19,19 @@ const FormRow = ({
   placeholder,
 }: TFormRow) => {
   return (
-    <div className="form-row">
-      <label htmlFor="nome" className="form-label">
-        {labelText}
-      </label>
-      <input
-        type={type}
+    <Box className="form-row">
+      <TextField
         id={name}
         name={name}
         value={value}
-        className="form-input"
-        onChange={handleChange}
+        label={labelText}
+        variant="outlined"
+        type={type}
         placeholder={placeholder}
+        onChange={handleChange}
       />
-    </div>
+    </Box>
   );
 };
+
 export default FormRow;

@@ -1,3 +1,7 @@
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+
 type TformRowSelect = {
   name: string;
   value: string;
@@ -14,29 +18,24 @@ const FormRowSelect = ({
   list,
 }: TformRowSelect) => {
   return (
-    <div className="form-row">
-      <label htmlFor={name} className="form-label">
-        {labelText || name}
-      </label>
-      <select
+    <Box className="form-select">
+      <TextField
         name={name}
         id={name}
+        select
+        label={labelText}
         value={value}
         onChange={handleChange}
-        className="form-select"
+        fullWidth
+        variant="outlined"
       >
-        <option value="" disabled>
-          Selecione uma opção
-        </option>
-        {list.map((option, index) => {
-          return (
-            <option key={index} value={option} className="select-option">
-              {option}
-            </option>
-          );
-        })}
-      </select>
-    </div>
+        {list.map((option) => (
+          <MenuItem key={option} value={option}>
+            {option}
+          </MenuItem>
+        ))}
+      </TextField>
+    </Box>
   );
 };
 export default FormRowSelect;

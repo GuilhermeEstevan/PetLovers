@@ -5,6 +5,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { Typography, Box } from "@mui/material";
 import dayjs from "dayjs";
 import { toDate } from "date-fns";
 import { usePetContext } from "../../context/petContext";
@@ -35,16 +36,20 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
   }, [isEditing]);
 
   return (
-    <div className="form-row">
-      <label>{labelText}</label>
+    <div className="form-row calendar">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker
-            format="DD/MM/YYYY"
-            value={date ? value : null}
-            onChange={handleChangeDate}
-            key={date ? value?.toString() : "null"}
-          />
+          <Box sx={{ mb: 2 }}>
+            <Typography variant="body2" sx={{ marginBottom: 1 }}>
+              {labelText}
+            </Typography>
+            <DatePicker
+              format="DD/MM/YYYY"
+              value={date ? value : null}
+              onChange={handleChangeDate}
+              key={date ? value?.toString() : "null"}
+            />
+          </Box>
         </DemoContainer>
       </LocalizationProvider>
     </div>

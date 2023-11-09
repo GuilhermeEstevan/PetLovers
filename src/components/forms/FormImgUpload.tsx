@@ -38,18 +38,30 @@ const FormImgUpload = ({ setFile }: TFormImgProps) => {
     }
   };
 
+  const handleSelectImage = (e: any) => {
+    e.preventDefault();
+    const fileInput = document.getElementById("petImage");
+    fileInput?.click();
+  };
+
   return (
     <div className="form-row image-row">
-      <label htmlFor="petImage" className="form-label">
-        Foto de Perfil
-      </label>
-      <input
-        type="file"
-        accept="image/*"
-        id="petImage"
-        name="petImage"
-        onChange={handleFileInputChange}
-      />
+      <div className="input">
+        <label htmlFor="petImage" className="form-label">
+          Foto de Perfil
+        </label>
+        <button className="btn" onClick={handleSelectImage}>
+          Selecionar foto
+        </button>
+        <input
+          style={{ display: "none" }}
+          type="file"
+          accept="image/*"
+          id="petImage"
+          name="petImage"
+          onChange={handleFileInputChange}
+        />
+      </div>
       {previewSource && (
         <img
           src={previewSource}

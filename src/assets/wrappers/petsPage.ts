@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import welcomeImg from "../images/welcome.jpg";
 import puppies from "../images/puppies-2.jpg";
 
 const Wrapper = styled.section`
@@ -26,33 +25,53 @@ const Wrapper = styled.section`
     background-position: center;
     background-repeat: no-repeat;
     height: 35rem;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     width: 100%;
     text-align: center;
-    color: var(--primary-3);
     h3 {
-      padding: 2rem;
+      display: block;
+      font-weight: 900;
+      font-size: 2rem;
+      padding-top: 3rem;
     }
   }
 
   @media (min-width: 992px) {
     .pets {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr ;
       gap: 2rem;
     }
   }
 
+  @media (min-width: 1400px) {
+    .pets {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+
+
   @media (min-width: 1600px) {
     .pets {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
     }
 
     .welcome-section {
       height: 45rem;
     }
   }
+
+  @media (min-width: 2000px) {
+    .pets {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2rem
+    }
+  }
+
 `;
 export default Wrapper;
