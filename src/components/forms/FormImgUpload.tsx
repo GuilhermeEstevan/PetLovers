@@ -1,4 +1,5 @@
 import { useState } from "react";
+import defaultImg from "../../assets/images/dog-head.jpg";
 
 type TFormImgProps = {
   setFile: (file: File) => void;
@@ -45,7 +46,7 @@ const FormImgUpload = ({ setFile }: TFormImgProps) => {
   };
 
   return (
-    <div className="form-row image-row">
+    <div className="image-row">
       <div className="input">
         <label htmlFor="petImage" className="form-label">
           Foto de Perfil
@@ -62,13 +63,11 @@ const FormImgUpload = ({ setFile }: TFormImgProps) => {
           onChange={handleFileInputChange}
         />
       </div>
-      {previewSource && (
-        <img
-          src={previewSource}
-          alt="Imagem do pet"
-          className="pet-image-preview"
-        />
-      )}
+      <img
+        src={previewSource || defaultImg} // Substitua 'placeholder-image.png' pelo caminho da sua imagem de espaço reservado
+        alt="Imagem do pet"
+        className="pet-image-preview"
+      />
     </div>
   );
 };

@@ -69,13 +69,17 @@ const AddPetPage = () => {
     <Wrapper>
       <form className="form" encType="multipart/form-data">
         <h3>{isEditing ? "Editar Cadastro do Pet" : "Adcionar Novo Pet"}</h3>
+        <div className="form-imgUpload">
+          <FormImgUpload setFile={setFile} />
+        </div>
         <div className="form-center">
+
           <FormRow
             type="text"
             name="name"
             value={name}
             handleChange={handleChange}
-            labelText="Nome do pet"
+            labelText="Nome do Pet"
           />
           <FormRow
             type="text"
@@ -89,21 +93,21 @@ const AddPetPage = () => {
             name="breed"
             value={breed}
             handleChange={handleChange}
-            labelText="raça"
+            labelText="Raça"
           />
           <FormRowSelect
             name="gender"
             value={gender}
             handleChange={handleChange}
             list={genderOptions}
-            labelText="sexo"
+            labelText="Sexo"
           />
           <FormRow
             type="text"
             name="color"
             value={color}
             handleChange={handleChange}
-            labelText="cor"
+            labelText="Cor"
           />
 
           <NewFormCalendar
@@ -111,21 +115,19 @@ const AddPetPage = () => {
             setDate={handleDateChange}
             labelText={"Data de Nascimento"}
           />
-          <FormImgUpload setFile={setFile} />
-
         </div>
-          <div className="btn-container">
-            <button type="button" className="btn btn-block clear-btn">
-              Limpar
-            </button>
-            <button
-              type="submit"
-              className="btn btn-block submmit-btn"
-              onClick={handleSubmit}
-            >
-              {isEditing ? "Editar" : "Criar"}
-            </button>
-          </div>
+        <div className="btn-container">
+          <button type="button" className="btn btn-block clear-btn">
+            Limpar
+          </button>
+          <button
+            type="submit"
+            className="btn btn-block submmit-btn"
+            onClick={handleSubmit}
+          >
+            {isEditing ? "Editar" : "Criar"}
+          </button>
+        </div>
       </form>
     </Wrapper>
   );

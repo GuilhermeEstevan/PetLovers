@@ -85,6 +85,7 @@ const PetCardForm = () => {
             setDate={handleDateChange}
             labelText={"Data"}
           />
+        </div>
           <div className="btn-container">
             <button type="button" className="btn btn-block clear-btn">
               Limpar
@@ -97,7 +98,6 @@ const PetCardForm = () => {
               {isEditing ? "Editar" : "Criar"}
             </button>
           </div>
-        </div>
       </form>
     </Wrapper>
   );

@@ -1,7 +1,15 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
+  width: 90%;
+  margin: 0 auto;
   margin-top: 2rem;
+  border-radius: var(--borderRadius);
+  background: var(--white);
+  padding: 2rem 2rem 4rem;
+  box-shadow: var(--shadow-2);
+  max-width: var(--max-width);
+
 
   .pet-table {
     width: 100%;
@@ -13,13 +21,18 @@ const Wrapper = styled.section`
   .pet-table td {
     padding: 8px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid var(--grey-9);
   }
 
   .pet-table th {
-    background-color: var(--grey-5);
+    color: var(--white);
+    font-weight: 400;
+    background-color: var(--primary-5);
   }
 
+  .pet-table tbody tr:nth-child(odd) {
+    background-color: var(--white);
+  }
   .pet-table tbody tr:nth-child(even) {
     background-color: var(--grey-8);
   }

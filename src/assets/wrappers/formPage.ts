@@ -23,7 +23,7 @@ const Wrapper = styled.section`
     width: 15rem;
     margin: 0;
   }
-  .form-select{
+  .form-select {
     width: 14rem;
   }
 
@@ -31,7 +31,13 @@ const Wrapper = styled.section`
     margin-top: 3rem;
     display: grid;
     row-gap: 1.5rem;
-    width: 10rem
+    max-width: 30rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-imgUpload {
+    margin-top: 3rem;
+    max-width: 30rem;
   }
 
   .form-center button {
@@ -61,7 +67,7 @@ const Wrapper = styled.section`
     height: 120px;
     overflow: hidden;
     border-radius: 50%;
-    margin: 1rem;
+    margin-left: 3rem;
     img {
       width: 100%;
       height: 100%;
@@ -84,10 +90,10 @@ const Wrapper = styled.section`
 
   .image-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    margin-left: -1rem;
+    justify-content: flex-start;
+    margin-left: 0rem;
     margin-bottom: 2rem;
   }
 
@@ -133,12 +139,12 @@ const Wrapper = styled.section`
     align-items: baseline;
   }
 
-  .calendar{
+  .calendar {
     width: 14rem;
-    margin-top: -1.7rem;
+    margin-top: -1.72rem;
   }
 
-  .calendar-label{
+  .calendar-label {
     font-size: 0.8rem;
   }
 `;

@@ -24,14 +24,15 @@ const Wrapper = styled.section`
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 35rem;
+    height: 20rem;
     margin-bottom: 3rem;
     width: 100%;
     text-align: center;
     h3 {
+      color: var(--primary-3);
       display: block;
       font-weight: 900;
-      font-size: 2rem;
+      font-size: 1.5rem;
       padding-top: 3rem;
     }
   }
@@ -41,6 +42,14 @@ const Wrapper = styled.section`
       display: grid;
       grid-template-columns: 1fr 1fr ;
       gap: 2rem;
+    }
+
+    .welcome-section{
+      height: 35rem;
+
+      h3{
+        font-size: 2rem;
+      }
     }
   }
 
