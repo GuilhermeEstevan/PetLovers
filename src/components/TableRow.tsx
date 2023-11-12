@@ -2,14 +2,22 @@ import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 import { usePetContext } from "../context/petContext";
 
 type TCardInfo = {
-  procedure: string;
+  serviceType: string;
+  service: string;
   description: string;
   date: string;
   id: string;
   petId?: string;
 };
 
-const TableRow = ({ procedure, description, date, id, petId }: TCardInfo) => {
+const TableRow = ({
+  serviceType,
+  service,
+  description,
+  date,
+  id,
+  petId,
+}: TCardInfo) => {
   const { deletePetCard, SetEditingCardInfo, setIsEditing } = usePetContext();
 
   const handleDeleteBtn = () => {
@@ -21,12 +29,18 @@ const TableRow = ({ procedure, description, date, id, petId }: TCardInfo) => {
 
   const handleEditBtn = () => {
     setIsEditing(true);
-    SetEditingCardInfo({ _id: id, procedure, description, date });
+    SetEditingCardInfo({
+      _id: id,
+      serviceType,
+      service,
+      description,
+      date,
+    });
   };
 
   return (
     <tr>
-      <td>{procedure}</td>
+      <td>{service}</td>
       <td>{description}</td>
       <td>{date}</td>
       <td className="cardBtns">

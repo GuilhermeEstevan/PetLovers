@@ -15,6 +15,7 @@ const Wrapper = styled.section`
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;
+    text-transform: capitalize;
   }
 
   .pet-table th,
@@ -34,7 +35,7 @@ const Wrapper = styled.section`
     background-color: var(--white);
   }
   .pet-table tbody tr:nth-child(even) {
-    background-color: var(--grey-8);
+    background-color: var(--primary-9);
   }
 
   .pet-table th:last-child {

@@ -60,13 +60,15 @@ export type TCreatePetData = {
 };
 
 export type TCreatePetCardData = {
-  procedure: string;
+  serviceType: string;
+  service: string;
   description: string;
   date: Date;
 };
 
 export type TPetCardData = {
-  procedure: string;
+  serviceType: string;
+  service: string;
   description: string;
   date: string;
   _id: string;

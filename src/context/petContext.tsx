@@ -101,6 +101,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const createPetCard = async (data: TCreatePetCardData, petId: string) => {
     try {
       setIsLoading(true);
+      console.log(data);
+
       const response = await customFetch.patch(
         `/pets/createPetCard/${petId}`,
         data,

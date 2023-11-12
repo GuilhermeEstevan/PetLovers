@@ -25,6 +25,7 @@ const Wrapper = styled.section`
   }
   .form-select {
     width: 14rem;
+    text-transform: capitalize;
   }
 
   .form-center {

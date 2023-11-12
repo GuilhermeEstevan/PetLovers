@@ -21,7 +21,7 @@ const PetCardContainer = () => {
       <table className="pet-table">
         <thead>
           <tr>
-            <th>Procedimento</th>
+            <th>Serviço</th>
             <th>Descrição</th>
             <th>Data</th>
             <th>Ações</th>
@@ -29,7 +29,7 @@ const PetCardContainer = () => {
         </thead>
         <tbody>
           {singlePet?.petCards.map((item) => {
-            const { procedure, date, description, _id } = item;
+            const { serviceType, service, date, description, _id } = item;
             const dateObject = new Date(date);
             const formattedDate = format(dateObject, "dd/MM/yyyy");
             return (
@@ -37,7 +37,8 @@ const PetCardContainer = () => {
                 key={_id}
                 petId={petId}
                 id={_id}
-                procedure={procedure}
+                serviceType={serviceType}
+                service={service}
                 description={description}
                 date={formattedDate}
               />

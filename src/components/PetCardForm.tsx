@@ -5,24 +5,51 @@ import NewFormCalendar from "./forms/NewFormCalendar";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePetContext } from "../context/petContext";
 import { TCreatePetCardData } from "../interface/petInterface";
+import FormRowSelect from "./forms/FormRowSelect";
+import { Vaccines, HealthExams } from "../utils/vaccinesAndExams";
 
 const PetCardForm = () => {
   const petCardInitialState = {
+    serviceType: "",
+    service: "",
     description: "",
-    procedure: "",
     date: new Date(),
   };
   const [petCard, setPetCard] =
     useState<TCreatePetCardData>(petCardInitialState);
+  const [selectedServiceType, setSelectedServiceType] = useState<string | null>(
+    "vacina"
+  );
 
   const handleJobInput = (e: any) => {
     const name = e.target.name;
     const value = e.target.value;
-    setPetCard({
-      ...petCard,
-      [name]: value,
-    });
+
+    if (name === "serviceType") {
+      setSelectedServiceType(value);
+
+      if (value === "banho" || value === "tosa") {
+        setPetCard({
+          ...petCard,
+          [name]: value,
+          service: value,
+        });
+      } else {
+        setPetCard({
+          ...petCard,
+          [name]: value,
+          service: "", // Reinicia a escolha do serviço ao mudar o tipo do serviço
+        });
+      }
+    } else {
+      // Atualiza o estado normalmente
+      setPetCard({
+        ...petCard,
+        [name]: value,
+      });
+    }
   };
+
   const handleDateChange = (date: Date | null) => {
     setPetCard({
       ...petCard,
@@ -51,11 +78,17 @@ const PetCardForm = () => {
     setPetCard(petCardInitialState);
   };
 
+  const clearForm = () => {
+    setPetCard(petCardInitialState);
+  };
+
   useEffect(() => {
     if (isEditing && editingCardInfo) {
+      setSelectedServiceType(editingCardInfo.serviceType);
       setPetCard({
+        serviceType: editingCardInfo?.serviceType,
+        service: editingCardInfo?.service,
         description: editingCardInfo?.description,
-        procedure: editingCardInfo?.procedure,
         date: new Date(editingCardInfo.date),
       });
     }
@@ -66,13 +99,35 @@ const PetCardForm = () => {
       <form className="form">
         <h3>Carteirinha do pet</h3>
         <div className="form-center">
-          <FormRow
-            type="text"
-            name="procedure"
-            value={petCard.procedure}
+          <FormRowSelect
+            name="serviceType"
+            value={petCard.serviceType}
             handleChange={handleJobInput}
-            labelText="Procedimento"
+            labelText="Serviço"
+            list={["vacina", "exame", "tosa", "banho"]}
           />
+          {selectedServiceType !== "banho" &&
+            selectedServiceType !== "tosa" && (
+              <FormRowSelect
+                name="service"
+                value={petCard.service}
+                handleChange={handleJobInput}
+                labelText={
+                  selectedServiceType === "vacina"
+                    ? "Vacina"
+                    : selectedServiceType === "exame"
+                    ? "Exame"
+                    : ""
+                }
+                list={
+                  selectedServiceType === "vacina"
+                    ? Object.values(Vaccines)
+                    : selectedServiceType === "exame"
+                    ? Object.values(HealthExams)
+                    : []
+                }
+              />
+            )}
           <FormRow
             type="text"
             name="description"
@@ -86,18 +141,22 @@ const PetCardForm = () => {
             labelText={"Data"}
           />
         </div>
-          <div className="btn-container">
-            <button type="button" className="btn btn-block clear-btn">
-              Limpar
-            </button>
-            <button
-              type="submit"
-              className="btn btn-block submmit-btn"
-              onClick={handleSubmit}
-            >
-              {isEditing ? "Editar" : "Criar"}
-            </button>
-          </div>
+        <div className="btn-container">
+          <button
+            type="button"
+            className="btn btn-block clear-btn"
+            onClick={clearForm}
+          >
+            Limpar
+          </button>
+          <button
+            type="submit"
+            className="btn btn-block submmit-btn"
+            onClick={handleSubmit}
+          >
+            {isEditing ? "Editar" : "Criar"}
+          </button>
+        </div>
       </form>
     </Wrapper>
   );

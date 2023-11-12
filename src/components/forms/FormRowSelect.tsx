@@ -30,7 +30,7 @@ const FormRowSelect = ({
         variant="outlined"
       >
         {list.map((option) => (
-          <MenuItem key={option} value={option}>
+          <MenuItem key={option} value={option} style={{ textTransform: 'capitalize' }}>
             {option}
           </MenuItem>
         ))}
