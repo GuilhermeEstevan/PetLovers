@@ -7,6 +7,7 @@ import { usePetContext } from "../context/petContext";
 import { TCreatePetCardData } from "../interface/petInterface";
 import FormRowSelect from "./forms/FormRowSelect";
 import { Vaccines, HealthExams } from "../utils/vaccinesAndExams";
+import { format } from "date-fns-tz";
 
 const PetCardForm = () => {
   const petCardInitialState = {
@@ -66,16 +67,22 @@ const PetCardForm = () => {
       const navigate = useNavigate();
       return navigate("/");
     }
+    const formattedDate = format(
+      new Date(petCard.date),
+      "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+      { timeZone: "UTC" }
+    );
+
     if (isEditing) {
       const id = editingCardInfo?._id;
       if (!id) return console.log("Id não encontrado!");
-      editPetCard(petId, id, petCard);
-      setPetCard(petCardInitialState);
+      editPetCard(petId, id, { ...petCard, date: new Date(formattedDate) });
+      clearForm();
       return;
     }
 
-    createPetCard(petCard, petId);
-    setPetCard(petCardInitialState);
+    createPetCard({ ...petCard, date: new Date(formattedDate) }, petId);
+    clearForm;
   };
 
   const clearForm = () => {
@@ -83,6 +90,8 @@ const PetCardForm = () => {
   };
 
   useEffect(() => {
+    console.log(editingCardInfo);
+
     if (isEditing && editingCardInfo) {
       setSelectedServiceType(editingCardInfo.serviceType);
       setPetCard({

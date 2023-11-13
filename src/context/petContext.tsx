@@ -141,6 +141,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   ) => {
     try {
       setIsEditing(true);
+      console.log(data);
+
       const response = await customFetch.patch(
         `/pets/${petId}/petcards/${petCardId}`,
         data,

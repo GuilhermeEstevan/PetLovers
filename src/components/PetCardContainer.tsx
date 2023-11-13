@@ -30,8 +30,12 @@ const PetCardContainer = () => {
         <tbody>
           {singlePet?.petCards.map((item) => {
             const { serviceType, service, date, description, _id } = item;
-            const dateObject = new Date(date);
+
+            const milliseconds = Date.parse(date);
+            const dateObject = new Date(milliseconds);
             const formattedDate = format(dateObject, "dd/MM/yyyy");
+            console.log(date, formattedDate);
+
             return (
               <TableRow
                 key={_id}
