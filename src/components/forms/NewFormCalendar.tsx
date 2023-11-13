@@ -7,14 +7,14 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Typography, Box } from "@mui/material";
 import dayjs from "dayjs";
-import { toDate } from "date-fns";
 import { usePetContext } from "../../context/petContext";
+
 dayjs.locale("pt-br");
 
 type TFormCalendar = {
-  setDate: (date: Date | null) => void;
+  setDate: (date: string | null) => void;
   labelText: string;
-  date: Date;
+  date: string | null;
 };
 
 const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
@@ -22,7 +22,8 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
   const { isEditing, editingCardInfo } = usePetContext();
 
   const handleChangeDate = (newDate: Dayjs | null) => {
-    setDate(newDate ? toDate(newDate.toDate()) : null);
+    const dateString = newDate ? newDate.format("DD/MM/YYYY") : null;
+    setDate(dateString);
     setValue(newDate);
     console.log(newDate);
   };
@@ -40,7 +41,10 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
           <Box>
-            <Typography variant="body2" sx={{ marginBottom: 2.32 }}></Typography>
+            <Typography
+              variant="body2"
+              sx={{ marginBottom: 2.32 }}
+            ></Typography>
             <DatePicker
               label={labelText}
               format="DD/MM/YYYY"
@@ -54,4 +58,5 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
     </div>
   );
 };
+
 export default NewFormCalendar;

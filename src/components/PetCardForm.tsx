@@ -7,14 +7,14 @@ import { usePetContext } from "../context/petContext";
 import { TCreatePetCardData } from "../interface/petInterface";
 import FormRowSelect from "./forms/FormRowSelect";
 import { Vaccines, HealthExams } from "../utils/vaccinesAndExams";
-import { format } from "date-fns-tz";
+import moment from "moment";
 
 const PetCardForm = () => {
   const petCardInitialState = {
     serviceType: "",
     service: "",
     description: "",
-    date: new Date(),
+    date: "",
   };
   const [petCard, setPetCard] =
     useState<TCreatePetCardData>(petCardInitialState);
@@ -51,14 +51,21 @@ const PetCardForm = () => {
     }
   };
 
-  const handleDateChange = (date: Date | null) => {
-    setPetCard({
-      ...petCard,
-      date: date || new Date(),
-    });
+  const handleDateChange = (date: string | null) => {
+    if (date) {
+      setPetCard({
+        ...petCard,
+        date: date,
+      });
+    }
   };
-  const { createPetCard, isEditing, editPetCard, editingCardInfo } =
-    usePetContext();
+  const {
+    createPetCard,
+    isEditing,
+    editPetCard,
+    editingCardInfo,
+    setIsEditing,
+  } = usePetContext();
   const { petId } = useParams();
 
   const handleSubmit = (e: any) => {
@@ -67,26 +74,24 @@ const PetCardForm = () => {
       const navigate = useNavigate();
       return navigate("/");
     }
-    const formattedDate = format(
-      new Date(petCard.date),
-      "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-      { timeZone: "UTC" }
-    );
 
+    const formattedDate = moment(petCard.date, "DD/MM/YYYY").toISOString();
     if (isEditing) {
       const id = editingCardInfo?._id;
       if (!id) return console.log("Id não encontrado!");
-      editPetCard(petId, id, { ...petCard, date: new Date(formattedDate) });
+      editPetCard(petId, id, { ...petCard, date: formattedDate });
       clearForm();
       return;
     }
+    console.log(petCard.date);
 
-    createPetCard({ ...petCard, date: new Date(formattedDate) }, petId);
-    clearForm;
+    createPetCard({ ...petCard, date: formattedDate }, petId);
+    clearForm();
   };
 
   const clearForm = () => {
     setPetCard(petCardInitialState);
+    setIsEditing(false);
   };
 
   useEffect(() => {
@@ -98,7 +103,7 @@ const PetCardForm = () => {
         serviceType: editingCardInfo?.serviceType,
         service: editingCardInfo?.service,
         description: editingCardInfo?.description,
-        date: new Date(editingCardInfo.date),
+        date: editingCardInfo.date,
       });
     }
   }, [isEditing]);

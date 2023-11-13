@@ -28,6 +28,8 @@ const TableRow = ({
   };
 
   const handleEditBtn = () => {
+    console.log(date);
+
     setIsEditing(true);
     SetEditingCardInfo({
       _id: id,

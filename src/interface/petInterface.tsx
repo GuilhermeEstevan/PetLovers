@@ -63,7 +63,7 @@ export type TCreatePetCardData = {
   serviceType: string;
   service: string;
   description: string;
-  date: Date;
+  date: string;
 };
 
 export type TPetCardData = {
