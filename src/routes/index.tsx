@@ -8,6 +8,7 @@ import ProfilePage from "../pages/profilePage";
 import GalleryPage from "../pages/galleryPage";
 import PetCard from "../pages/petCard";
 import ProtectedRoute from "../pages/protectedRoute";
+import PetProfile from "../pages/petProfile";
 
 const RoutesMain = () => {
   return (
@@ -26,6 +27,7 @@ const RoutesMain = () => {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/gallery/:petId" element={<GalleryPage />} />
           <Route path="/petCard/:petId" element={<PetCard />} />
+          <Route path="/petProfile/:petId" element={<PetProfile />} />
         </Route>
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />} />

@@ -7,7 +7,8 @@ const GalleryPage = () => {
 
   if (!petId) {
     const navigate = useNavigate();
-    return navigate("/");
+    navigate("/");
+    return;
   }
 
   return (

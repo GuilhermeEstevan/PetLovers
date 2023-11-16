@@ -48,7 +48,7 @@ const Pet = (data: TPetMain) => {
   return (
     <Wrapper>
       <header>
-        <Link to="pet" className="pet-image">
+        <Link to={`petProfile/${id}`} className="pet-image">
           <img src={photo} alt="pet image" />
           <span className="eye-icon">
             <BsEyeFill />

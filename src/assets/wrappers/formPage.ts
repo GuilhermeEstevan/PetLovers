@@ -96,6 +96,10 @@ const Wrapper = styled.section`
     justify-content: flex-start;
     margin-left: 0rem;
     margin-bottom: 2rem;
+
+    img{
+      margin-left: 1rem;
+    }
   }
 
   .addPhoto-center {

@@ -21,6 +21,8 @@ export type TPetContext = {
   editingCardInfo: TPetCardData | null;
   SetEditingCardInfo: React.Dispatch<SetStateAction<TPetCardData | null>>;
   addGalleryPhoto: (petid: string, image: TaddGalleryPhotoData) => void;
+  deleteGalleryPhoto: (petId: string, imageId: string) => void;
+  uploadImageToCloudinary: (file: any) => Promise<string>;
 };
 
 export type TPetContextProps = {
@@ -34,7 +36,7 @@ export type TAllPets = {
 };
 
 export type TPet = {
-  birthday: Date;
+  birthday: string;
   breed: string;
   color: string;
   createdAt: Date;
@@ -49,8 +51,18 @@ export type TPet = {
   _id: string;
 };
 
+export type TPetProfileData = {
+  birthday: string;
+  breed: string;
+  color: string;
+  gender: string;
+  name: string;
+  photo: string;
+  species: string;
+}
+
 export type TCreatePetData = {
-  birthday: Date;
+  birthday: string;
   breed: string;
   color: string;
   gender: string;

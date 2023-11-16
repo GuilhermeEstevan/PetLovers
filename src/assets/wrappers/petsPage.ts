@@ -3,6 +3,7 @@ import puppies from "../images/puppies-2.jpg";
 
 const Wrapper = styled.section`
   margin-top: -2rem;
+  min-height: 100vh;
   h2 {
     text-transform: none;
   }
@@ -24,7 +25,7 @@ const Wrapper = styled.section`
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 20rem;
+    height: 25rem;
     margin-bottom: 3rem;
     width: 100%;
     text-align: center;

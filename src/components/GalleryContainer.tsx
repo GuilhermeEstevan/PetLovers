@@ -20,7 +20,9 @@ const GalleryContainer = ({ petId }: TGalleryContainerProps) => {
         {singlePet?.gallery.map((item) => {
           const { image, _id } = item;
 
-          return <GalleryPhoto image={image} key={_id} />;
+          return (
+            <GalleryPhoto image={image} petId={petId} imageId={_id} key={_id} />
+          );
         })}
       </div>
     </Wrapper>

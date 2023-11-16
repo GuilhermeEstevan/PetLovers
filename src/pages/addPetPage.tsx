@@ -5,15 +5,14 @@ import FormImgUpload from "../components/forms/FormImgUpload";
 import NewFormCalendar from "../components/forms/NewFormCalendar";
 import { usePetContext } from "../context/petContext";
 import { useState } from "react";
-import axios from "axios";
+import { toast } from "react-toastify";
 import { TCreatePetData } from "../interface/petInterface";
-const cloudName = import.meta.env.VITE_CLOUD_NAME;
 
 const AddPetPage = () => {
   const isEditing = false;
   const genderOptions = ["macho", "fêmea"];
   const [file, setFile] = useState<File | null>(null);
-  const { pet, setPet, createPet } = usePetContext();
+  const { pet, setPet, createPet, uploadImageToCloudinary } = usePetContext();
   const { breed, color, name, species, gender } = pet;
 
   const handleChange = (e: any) => {
@@ -27,7 +26,7 @@ const AddPetPage = () => {
     });
   };
 
-  const handleDateChange = (date: Date | null) => {
+  const handleDateChange = (date: string | null) => {
     if (date) {
       setPet({
         ...pet,
@@ -38,6 +37,22 @@ const AddPetPage = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    const { birthday, gender, color, name, breed, species } = pet;
+    if (!file) {
+      toast.error("Selecione uma foto de perfil para o Pet !");
+      return;
+    }
+    if (
+      birthday === "" ||
+      gender === "" ||
+      color === "" ||
+      name === "" ||
+      breed === "" ||
+      species === ""
+    ) {
+      toast.error("Preencha todos os campos !");
+      return;
+    }
 
     const secureUrl = await uploadImageToCloudinary(file);
     const createPetData: TCreatePetData = {
@@ -45,24 +60,20 @@ const AddPetPage = () => {
       photo: secureUrl,
     };
     createPet(createPetData);
+    clearForm();
   };
 
-  const uploadImageToCloudinary = async (file: any) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("folder", "PetLovers");
-    formData.append("upload_preset", "PetLovers-images");
-
-    try {
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
-        formData
-      );
-      console.log(response);
-      return response.data.secure_url;
-    } catch (error) {
-      console.log(error);
-    }
+  const clearForm = () => {
+    setPet({
+      birthday: "",
+      breed: "",
+      color: "",
+      gender: "",
+      name: "",
+      photo: "",
+      species: "",
+    });
+    setFile(null);
   };
 
   return (
@@ -70,10 +81,9 @@ const AddPetPage = () => {
       <form className="form" encType="multipart/form-data">
         <h3>{isEditing ? "Editar Cadastro do Pet" : "Adcionar Novo Pet"}</h3>
         <div className="form-imgUpload">
-          <FormImgUpload setFile={setFile} />
+          <FormImgUpload setFile={setFile} label="foto de perfil" file={file} />
         </div>
         <div className="form-center">
-
           <FormRow
             type="text"
             name="name"
@@ -117,7 +127,11 @@ const AddPetPage = () => {
           />
         </div>
         <div className="btn-container">
-          <button type="button" className="btn btn-block clear-btn">
+          <button
+            type="button"
+            className="btn btn-block clear-btn"
+            onClick={clearForm}
+          >
             Limpar
           </button>
           <button

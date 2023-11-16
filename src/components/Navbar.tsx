@@ -7,7 +7,7 @@ import { BiMenuAltLeft } from "react-icons/bi";
 
 const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false);
-  const { toggleSidebar, user } = useUserContext();
+  const { toggleSidebar, user, logoutUser } = useUserContext();
 
   return (
     <Wrapper>
@@ -36,7 +36,7 @@ const Navbar = () => {
             <FaCaretDown />
           </button>
           <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
-            <button type="button" className="dropdown-btn">
+            <button type="button" className="dropdown-btn" onClick={logoutUser}>
               Logout
             </button>
           </div>

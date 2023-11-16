@@ -2,27 +2,55 @@ import styled from "styled-components";
 
 const Wrapper = styled.article`
   .photo {
-    border: 2px solid var(--grey-4); /* Cor da moldura */
-    border-radius: 20px;
-    background-color: var(--white);
-    margin: 2px; /* Espaço entre as fotos */
-    height: 350px;
-    width: 260px;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
+    position: relative;
+    height: 20rem;
+    width: 20rem;
+    margin: 0 auto;
     overflow: hidden;
 
     img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 10px;
-      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       object-position: center;
-      object-fit: contain;
-      margin: 10px; /* Espaço entre a imagem e a moldura */
-      box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.7)
+      border-radius: 5%;
+      transition: var(--transition);
     }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      button {
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+      }
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+    }
+
+    &:hover img {
+      filter: brightness(0.5);
+    }
+  }
+
+  .download-btn,
+  .delete-btn {
+    border: none;
+    color: var(--grey-8);
+    font-size: 2rem;
+    background: transparent;
   }
 `;
 

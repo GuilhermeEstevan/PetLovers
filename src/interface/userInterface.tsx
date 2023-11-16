@@ -4,6 +4,7 @@ export type TUserContext = {
   registerUser: (registerData: TRegisterData) => void;
   loginUser: (loginData: TLoginData) => void;
   updateUser: (updatedData: TUserUpdateData) => void;
+  logoutUser: () => void;
   user: TUser | null;
   isLoading: boolean;
 };

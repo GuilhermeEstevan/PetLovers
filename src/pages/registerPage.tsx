@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Wrapper from "../assets/wrappers/registerPage";
 import Logo from "../components/Logo";
 import FormRow from "../components/forms/FormRow";
 import { MdPets } from "react-icons/md";
 import { useUserContext } from "../context/userContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-  const isLoading = false;
+  const navigate = useNavigate();
   const [isMember, setIsMember] = useState(true);
+  const { user, isLoading } = useUserContext();
 
   const toggleMember = () => {
     setIsMember(!isMember);
@@ -31,6 +34,10 @@ const RegisterPage = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
+    if (!email || !password || (!isMember && !name)) {
+      toast.error("Preencha todos os campos");
+    }
+
     if (!isMember) {
       registerUser({ email, name, password });
       return;
@@ -38,6 +45,13 @@ const RegisterPage = () => {
 
     loginUser({ email, password });
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
+
   return (
     <Wrapper className="full-page">
       <nav>
@@ -59,7 +73,7 @@ const RegisterPage = () => {
             name="name"
             value={name}
             handleChange={handleName}
-            labelText="Name"
+            labelText="Nome"
           />
         )}
         {/* EMAIL */}
@@ -75,7 +89,7 @@ const RegisterPage = () => {
           type="text"
           name="password"
           value={password}
-          labelText="password"
+          labelText="Senha"
           handleChange={handlePassword}
         />
         <button type="submit" className="btn btn-block" disabled={isLoading}>

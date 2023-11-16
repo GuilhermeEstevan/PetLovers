@@ -16,6 +16,8 @@ const PetCardContainer = () => {
     getSinglePet(petId);
   }, []);
 
+  
+
   return (
     <Wrapper>
       <table className="pet-table">

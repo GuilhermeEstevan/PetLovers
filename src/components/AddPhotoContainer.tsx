@@ -1,39 +1,25 @@
 import Wrapper from "../assets/wrappers/formPage";
 import { usePetContext } from "../context/petContext";
 import { TaddGalleryPhotoData } from "../interface/petInterface";
-import FormGalleryUpload from "./forms/FormGalleryUpload";
-import axios from "axios";
+// import FormGalleryUpload from "./forms/FormGalleryUpload";
 import { useState } from "react";
+import FormImgUpload from "./forms/FormImgUpload";
+import { toast } from "react-toastify";
 
 type TAddPhotoContainerProps = {
   petId: string;
 };
 
 const AddPhotoContainer = ({ petId }: TAddPhotoContainerProps) => {
-  const { addGalleryPhoto } = usePetContext();
+  const { addGalleryPhoto, isLoading, uploadImageToCloudinary } =
+    usePetContext();
   const [file, setFile] = useState<File | null>(null);
-  const cloudName = import.meta.env.VITE_CLOUD_NAME;
-
-  const uploadImageToCloudinary = async (file: any) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("folder", "PetLovers");
-    formData.append("upload_preset", "PetLovers-images");
-
-    try {
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
-        formData
-      );
-      console.log(response);
-      return response.data.secure_url;
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    if (!file) {
+      return toast.error("Nenhuma imagem foi selecionada!");
+    }
     const secureUrl = await uploadImageToCloudinary(file);
     console.log(secureUrl);
     const addGalleryPhotoData: TaddGalleryPhotoData = {
@@ -42,15 +28,24 @@ const AddPhotoContainer = ({ petId }: TAddPhotoContainerProps) => {
     addGalleryPhoto(petId, addGalleryPhotoData);
   };
 
+  const handleClearImage = () => {
+    setFile(null);
+  };
+
   return (
     <Wrapper>
       <form className="form">
         <h3>Adcionar Nova Foto</h3>
         <div className="addPhoto-center">
-          <FormGalleryUpload setFile={setFile} />
+          <FormImgUpload setFile={setFile} label="galeria" file={file} />
+          {/* <FormGalleryUpload setFile={setFile} /> */}
         </div>
         <div className="btn-container">
-          <button type="button" className="btn btn-block clear-btn">
+          <button
+            type="button"
+            className="btn btn-block clear-btn"
+            onClick={handleClearImage}
+          >
             Limpar
           </button>
           <button
@@ -58,7 +53,7 @@ const AddPhotoContainer = ({ petId }: TAddPhotoContainerProps) => {
             className="btn btn-block submmit-btn"
             onClick={handleSubmit}
           >
-            Adcionar
+            {isLoading ? "Carregando..." : "Adcionar"}
           </button>
         </div>
       </form>

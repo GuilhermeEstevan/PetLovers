@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import defaultImg from "../../assets/images/dog-head.jpg";
 
 type TFormImgProps = {
-  setFile: (file: File) => void;
+  setFile: (file: File | null) => void;
+  label: string;
+  file: File | null;
 };
 
-const FormImgUpload = ({ setFile }: TFormImgProps) => {
+const FormImgUpload = ({ setFile, label, file }: TFormImgProps) => {
   const [previewSource, setPreviewSource] = useState<string>("");
+  const [fileInputKey, setFileInputKey] = useState<number>(0);
 
   const previewFile = (file: any) => {
     const reader = new FileReader();
@@ -45,16 +48,24 @@ const FormImgUpload = ({ setFile }: TFormImgProps) => {
     fileInput?.click();
   };
 
+  useEffect(() => {
+    if (!file) {
+      setPreviewSource("");
+      setFileInputKey((prevKey) => prevKey + 1);
+    }
+  }, [file]);
+
   return (
     <div className="image-row">
       <div className="input">
         <label htmlFor="petImage" className="form-label">
-          Foto de Perfil
+          {label}
         </label>
         <button className="btn" onClick={handleSelectImage}>
           Selecionar foto
         </button>
         <input
+          key={fileInputKey}
           style={{ display: "none" }}
           type="file"
           accept="image/*"

@@ -11,6 +11,7 @@ import customFetch from "../utils/api";
 import { toast } from "react-toastify";
 import {
   getUserFromLocalStorage,
+  removeUserFromLocalStorage,
   setUserToLocalStorage,
 } from "../utils/localStorage";
 
@@ -74,6 +75,11 @@ export const UserProvider = ({ children }: TUserContextProps) => {
     }
   };
 
+  const logoutUser = () => {
+    setUser(null);
+    removeUserFromLocalStorage();
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -84,6 +90,7 @@ export const UserProvider = ({ children }: TUserContextProps) => {
         user,
         isLoading,
         updateUser,
+        logoutUser
       }}
     >
       {children}

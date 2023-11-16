@@ -72,5 +72,9 @@ const Wrapper = styled.section`
     cursor: pointer;
     letter-spacing: var(--letterSpacing);
   }
+
+  .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+    width: 100%;
+  }
 `;
 export default Wrapper;

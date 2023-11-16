@@ -12,6 +12,8 @@ import {
 import customFetch from "../utils/api";
 import { useUserContext } from "./userContext";
 import { toast } from "react-toastify";
+import axios from "axios";
+const cloudName = import.meta.env.VITE_CLOUD_NAME;
 
 const PetContext = createContext({} as TPetContext);
 
@@ -31,7 +33,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   });
 
   const [pet, setPet] = useState<TCreatePetData>({
-    birthday: new Date(),
+    birthday: "",
     breed: "",
     color: "",
     gender: "",
@@ -72,7 +74,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log(response);
+      console.log(response);
       setIsLoading(false);
       toast.success("Pet criado!");
     } catch (error) {
@@ -89,8 +91,9 @@ export const PetProvider = ({ children }: TPetContextProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log(response);
       setSinglePet(response.data);
+      console.log(response.data);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -157,6 +160,27 @@ export const PetProvider = ({ children }: TPetContextProps) => {
     }
   };
 
+  const uploadImageToCloudinary = async (file: any) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("folder", "PetLovers");
+    formData.append("upload_preset", "PetLovers-images");
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
+        formData
+      );
+      console.log(response);
+      setIsLoading(false);
+      return response.data.secure_url;
+    } catch (error) {
+      toast.error("Erro no upload");
+      setIsLoading(false);
+    }
+  };
+
   const addGalleryPhoto = async (petId: string, data: TaddGalleryPhotoData) => {
     try {
       setIsLoading(true);
@@ -169,6 +193,22 @@ export const PetProvider = ({ children }: TPetContextProps) => {
     } catch (error) {
       setIsLoading(false);
       console.log(error);
+    }
+  };
+
+  const deleteGalleryPhoto = async (petId: string, imageId: string) => {
+    try {
+      setIsLoading(true);
+      const response = await customFetch.delete(
+        `/pets/${petId}/gallery/${imageId}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log(response);
+      getSinglePet(petId);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -191,6 +231,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         editingCardInfo,
         SetEditingCardInfo,
         addGalleryPhoto,
+        deleteGalleryPhoto,
+        uploadImageToCloudinary,
       }}
     >
       {children}
