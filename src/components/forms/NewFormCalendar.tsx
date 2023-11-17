@@ -19,7 +19,7 @@ type TFormCalendar = {
 
 const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
   const [value, setValue] = useState<Dayjs | null>(date ? dayjs(date) : null);
-  const { isEditing, editingCardInfo } = usePetContext();
+  const { isEditing, editingCardInfo, singlePet } = usePetContext();
 
   const handleChangeDate = (newDate: Dayjs | null) => {
     const dateString = newDate ? newDate.format("DD/MM/YYYY") : null;
@@ -35,6 +35,13 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
       console.log(editingDate);
     }
   }, [isEditing]);
+
+  // Definição de data para perfil do pet
+  useEffect(() => {
+    if (singlePet?.birthday) {
+      setValue(dayjs(singlePet.birthday, "YYYY/MM/DD"));
+    }
+  }, [singlePet]);
 
   return (
     <div className="form-row calendar">

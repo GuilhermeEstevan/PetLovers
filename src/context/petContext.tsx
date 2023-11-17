@@ -21,6 +21,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const { user } = useUserContext();
   const token = user?.token;
   const [isLoading, setIsLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editingCardInfo, SetEditingCardInfo] = useState<TPetCardData | null>(
     null
@@ -77,6 +78,21 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       console.log(response);
       setIsLoading(false);
       toast.success("Pet criado!");
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  const editPet = async (data: TCreatePetData, petId: string) => {
+    try {
+      setIsLoading(true);
+      const response = await customFetch.patch(`pets/editPet/${petId}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log(response);
+
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -219,11 +235,13 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         getAllPets,
         allPets,
         createPet,
+        editPet,
         pet,
         setPet,
         createPetCard,
         getSinglePet,
         singlePet,
+        setSinglePet,
         deletePetCard,
         editPetCard,
         isEditing,
@@ -233,6 +251,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         addGalleryPhoto,
         deleteGalleryPhoto,
         uploadImageToCloudinary,
+        pageLoading,
+        setPageLoading,
       }}
     >
       {children}

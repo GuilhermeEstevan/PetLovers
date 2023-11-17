@@ -4,12 +4,14 @@ export type TPetContext = {
   isLoading: boolean;
   getAllPets: () => void;
   allPets: TAllPets;
-  createPet: (data: any) => void;
+  createPet: (data: TCreatePetData) => void;
+  editPet: (data: TCreatePetData, petId: string) => void;
   pet: TCreatePetData;
   setPet: React.Dispatch<SetStateAction<TCreatePetData>>;
   createPetCard: (data: TCreatePetCardData, petId: string) => void;
   getSinglePet: (petId: string) => void;
   singlePet: TPet | null;
+  setSinglePet: React.Dispatch<SetStateAction<TPet | null>>;
   deletePetCard: (petId: string, petCardId: string) => void;
   editPetCard: (
     petId: string,
@@ -23,6 +25,8 @@ export type TPetContext = {
   addGalleryPhoto: (petid: string, image: TaddGalleryPhotoData) => void;
   deleteGalleryPhoto: (petId: string, imageId: string) => void;
   uploadImageToCloudinary: (file: any) => Promise<string>;
+  pageLoading: boolean;
+  setPageLoading: any;
 };
 
 export type TPetContextProps = {
@@ -59,7 +63,7 @@ export type TPetProfileData = {
   name: string;
   photo: string;
   species: string;
-}
+};
 
 export type TCreatePetData = {
   birthday: string;

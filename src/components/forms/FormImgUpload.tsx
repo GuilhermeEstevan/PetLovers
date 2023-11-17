@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import defaultImg from "../../assets/images/dog-head.jpg";
+import { usePetContext } from "../../context/petContext";
 
 type TFormImgProps = {
   setFile: (file: File | null) => void;
@@ -10,6 +11,7 @@ type TFormImgProps = {
 const FormImgUpload = ({ setFile, label, file }: TFormImgProps) => {
   const [previewSource, setPreviewSource] = useState<string>("");
   const [fileInputKey, setFileInputKey] = useState<number>(0);
+  const { singlePet } = usePetContext();
 
   const previewFile = (file: any) => {
     const reader = new FileReader();
@@ -54,6 +56,13 @@ const FormImgUpload = ({ setFile, label, file }: TFormImgProps) => {
       setFileInputKey((prevKey) => prevKey + 1);
     }
   }, [file]);
+
+  // Definição de data para perfil do pet
+  useEffect(() => {
+    if (singlePet?.photo) {
+      setPreviewSource(singlePet?.photo);
+    }
+  }, [singlePet]);
 
   return (
     <div className="image-row">

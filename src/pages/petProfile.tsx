@@ -7,9 +7,22 @@ import { toast } from "react-toastify";
 import { TPetProfileData } from "../interface/petInterface";
 import FormImgUpload from "../components/forms/FormImgUpload";
 import NewFormCalendar from "../components/forms/NewFormCalendar";
+import candleIcon from "../assets/images/birthday-cake-svgrepo-com.svg";
+import colorPalette from "../assets/images/paint-palette-art-svgrepo-com.svg";
+import genderIcon from "../assets/images/gender-svgrepo-com.svg";
+{
+  /* <PetInfo icon={<img src={candleIcon} />} text={`${age} anos`} /> */
+}
+{
+  /* <PetInfo icon={<img src={colorPalette} />} text={color} /> */
+}
+{
+  /* <PetInfo icon={<img src={genderIcon} />} text={gender} /> */
+}
 
 const PetProfile = () => {
-  const { singlePet, getSinglePet } = usePetContext();
+  const { singlePet, getSinglePet, setSinglePet, setPageLoading } =
+    usePetContext();
   const { petId } = useParams();
   const navigate = useNavigate();
 
@@ -64,6 +77,10 @@ const PetProfile = () => {
 
   useEffect(() => {
     getSinglePet(petId);
+    return () => {
+      setPageLoading(true);
+      setSinglePet(null);
+    };
   }, []);
 
   return (

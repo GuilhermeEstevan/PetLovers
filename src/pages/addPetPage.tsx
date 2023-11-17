@@ -4,15 +4,25 @@ import FormRowSelect from "../components/forms/FormRowSelect";
 import FormImgUpload from "../components/forms/FormImgUpload";
 import NewFormCalendar from "../components/forms/NewFormCalendar";
 import { usePetContext } from "../context/petContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { TCreatePetData } from "../interface/petInterface";
+import moment from "moment";
+import Loading from "../components/Loading";
 
 const AddPetPage = () => {
   const isEditing = false;
   const genderOptions = ["macho", "fêmea"];
   const [file, setFile] = useState<File | null>(null);
-  const { pet, setPet, createPet, uploadImageToCloudinary } = usePetContext();
+  const {
+    pet,
+    setPet,
+    createPet,
+    uploadImageToCloudinary,
+    singlePet,
+    pageLoading,
+    setPageLoading,
+  } = usePetContext();
   const { breed, color, name, species, gender } = pet;
 
   const handleChange = (e: any) => {
@@ -55,9 +65,11 @@ const AddPetPage = () => {
     }
 
     const secureUrl = await uploadImageToCloudinary(file);
+    const formattedDate = moment(pet.birthday, "DD/MM/YYYY").toISOString();
     const createPetData: TCreatePetData = {
       ...pet,
       photo: secureUrl,
+      birthday: formattedDate,
     };
     createPet(createPetData);
     clearForm();
@@ -75,6 +87,20 @@ const AddPetPage = () => {
     });
     setFile(null);
   };
+
+  useEffect(() => {
+    if (!singlePet) {
+      setPageLoading(false);
+    }
+  }, [singlePet]);
+
+  if (pageLoading) {
+    return (
+      <Wrapper>
+        <Loading />
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper>
