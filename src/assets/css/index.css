@@ -255,7 +255,7 @@ p {
 }
 .btn-danger {
   background: var(--red-light);
-  color: var(--red-dark);
+  color: var(--white);
 }
 .btn-danger:hover {
   background: var(--red-dark);

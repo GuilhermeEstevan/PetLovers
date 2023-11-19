@@ -8,13 +8,13 @@ type TPetMain = {
   breed: string;
   color: string;
   photo: string;
-  birthday: Date;
+  birthday: string;
   gender: string;
   id: string;
 };
 
 const Pet = (data: TPetMain) => {
-  const { name, breed, birthday, color, photo, gender, id } = data;
+  const { name, breed, photo, id } = data;
 
   return (
     <Wrapper>

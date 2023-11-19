@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-top: 0.5rem;
+  margin-right: 1rem;
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   .icon {
     font-size: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.5rem;
     display: flex;
     align-items: center;
     img {

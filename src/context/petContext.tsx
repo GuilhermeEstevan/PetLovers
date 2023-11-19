@@ -91,7 +91,21 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log(response);
+      toast.success("Pet Atualizado!");
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
 
+  const deletePet = async (petId: string) => {
+    try {
+      setIsLoading(true);
+      const response = await customFetch.delete(`/pets/deletePet/${petId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      toast.success("Cadastro do Pet removido!");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -108,7 +122,6 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         },
       });
       setSinglePet(response.data);
-      console.log(response.data);
 
       setIsLoading(false);
     } catch (error) {
@@ -236,6 +249,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         allPets,
         createPet,
         editPet,
+        deletePet,
         pet,
         setPet,
         createPetCard,

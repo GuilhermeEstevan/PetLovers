@@ -7,22 +7,20 @@ import { toast } from "react-toastify";
 import { TPetProfileData } from "../interface/petInterface";
 import FormImgUpload from "../components/forms/FormImgUpload";
 import NewFormCalendar from "../components/forms/NewFormCalendar";
-import candleIcon from "../assets/images/birthday-cake-svgrepo-com.svg";
-import colorPalette from "../assets/images/paint-palette-art-svgrepo-com.svg";
-import genderIcon from "../assets/images/gender-svgrepo-com.svg";
-{
-  /* <PetInfo icon={<img src={candleIcon} />} text={`${age} anos`} /> */
-}
-{
-  /* <PetInfo icon={<img src={colorPalette} />} text={color} /> */
-}
-{
-  /* <PetInfo icon={<img src={genderIcon} />} text={gender} /> */
-}
+import FormRowSelect from "../components/forms/FormRowSelect";
+import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
 
 const PetProfile = () => {
-  const { singlePet, getSinglePet, setSinglePet, setPageLoading } =
-    usePetContext();
+  const {
+    singlePet,
+    getSinglePet,
+    setSinglePet,
+    setPageLoading,
+    editPet,
+    deletePet,
+  } = usePetContext();
+  const genderOptions = ["macho", "fêmea"];
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const { petId } = useParams();
   const navigate = useNavigate();
 
@@ -50,6 +48,8 @@ const PetProfile = () => {
       ...petData,
       [name]: value,
     });
+
+    console.log(petData);
   };
 
   const handleDateChange = (date: string | null) => {
@@ -59,6 +59,35 @@ const PetProfile = () => {
         birthday: date,
       });
     }
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    const { birthday, gender, color, name, breed, species, photo } = petData;
+    // if (!file) {
+    //   toast.error("Selecione uma foto de perfil para o Pet !");
+    //   return;
+    // }
+    if (
+      birthday === "" ||
+      gender === "" ||
+      color === "" ||
+      name === "" ||
+      breed === "" ||
+      species === "" ||
+      photo === ""
+    ) {
+      toast.error("Preencha todos os campos !");
+      return;
+    }
+
+    editPet(petData, petId);
+  };
+
+  const handleDeleteBtn = () => {
+    deletePet(petId);
+    navigate("/");
   };
 
   useEffect(() => {
@@ -116,23 +145,41 @@ const PetProfile = () => {
           labelText="Cor do Pet"
           handleChange={handleChange}
         />
-        <FormRow
-          type="text"
-          name="gender"
-          value={petData.gender}
-          labelText="Sexo"
-          handleChange={handleChange}
-        />
-        <NewFormCalendar
-          date={petData.birthday}
-          setDate={handleDateChange}
-          labelText={"Data de Nascimento"}
-        />
-
-        <button type="submit" className="btn btn-block">
+        <div className="profile-row">
+          <FormRowSelect
+            name="gender"
+            value={petData.gender}
+            labelText="Sexo"
+            list={genderOptions}
+            handleChange={handleChange}
+          />
+        </div>
+        <div className="profile-row">
+          <NewFormCalendar
+            date={petData.birthday}
+            setDate={handleDateChange}
+            labelText={"Data de Nascimento"}
+          />
+        </div>
+      </form>
+      <div className="btn-container">
+        <button
+          type="button"
+          className="btn btn-block btn-danger"
+          onClick={() => setDeleteModalOpen(true)}
+        >
+          {"Excluir Pet"}
+        </button>
+        <button type="submit" className="btn btn-block" onClick={handleSubmit}>
           {"Salvar"}
         </button>
-      </form>
+      </div>
+
+      <DeleteConfirmationModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={handleDeleteBtn}
+      />
     </Wrapper>
   );
 };

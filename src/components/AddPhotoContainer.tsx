@@ -3,8 +3,8 @@ import { usePetContext } from "../context/petContext";
 import { TaddGalleryPhotoData } from "../interface/petInterface";
 // import FormGalleryUpload from "./forms/FormGalleryUpload";
 import { useState } from "react";
-import FormImgUpload from "./forms/FormImgUpload";
 import { toast } from "react-toastify";
+import FormGalleryUpload from "./forms/FormGalleryUpload";
 
 type TAddPhotoContainerProps = {
   petId: string;
@@ -26,6 +26,7 @@ const AddPhotoContainer = ({ petId }: TAddPhotoContainerProps) => {
       image: secureUrl,
     };
     addGalleryPhoto(petId, addGalleryPhotoData);
+    setFile(null);
   };
 
   const handleClearImage = () => {
@@ -37,8 +38,7 @@ const AddPhotoContainer = ({ petId }: TAddPhotoContainerProps) => {
       <form className="form">
         <h3>Adcionar Nova Foto</h3>
         <div className="addPhoto-center">
-          <FormImgUpload setFile={setFile} label="galeria" file={file} />
-          {/* <FormGalleryUpload setFile={setFile} /> */}
+          <FormGalleryUpload setFile={setFile} label="galeria" file={file} />
         </div>
         <div className="btn-container">
           <button

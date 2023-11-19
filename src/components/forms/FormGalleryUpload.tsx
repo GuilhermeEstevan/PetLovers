@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import defaultImg from "../../assets/images/dog-head.jpg";
 
 type TFormImgProps = {
-  setFile: (file: File) => void;
+  setFile: (file: File | null) => void;
+  label: string;
+  file: File | null;
 };
 
-const FormGalleryUpload = ({ setFile }: TFormImgProps) => {
+const FormGalleryUpload = ({ setFile, label, file }: TFormImgProps) => {
   const [previewSource, setPreviewSource] = useState<string>("");
+  const [fileInputKey, setFileInputKey] = useState<number>(0);
 
   const previewFile = (file: any) => {
     const reader = new FileReader();
@@ -38,13 +42,44 @@ const FormGalleryUpload = ({ setFile }: TFormImgProps) => {
     }
   };
 
+  const handleSelectImage = (e: any) => {
+    e.preventDefault();
+    const fileInput = document.getElementById("petImage");
+    fileInput?.click();
+  };
+
+  useEffect(() => {
+    if (!file) {
+      setPreviewSource("");
+      setFileInputKey((prevKey) => prevKey + 1);
+    }
+  }, [file]);
+
+  // Definição de data para perfil do pet
+
   return (
-    <div className="form-row image-row">
-      <input
-        type="file"
-        accept="image/*"
-        id="petImage"
-        onChange={handleFileInputChange}
+    <div className="image-row">
+      <div className="input">
+        <label htmlFor="petImage" className="form-label">
+          {label}
+        </label>
+        <button className="btn" onClick={handleSelectImage}>
+          Selecionar foto
+        </button>
+        <input
+          key={fileInputKey}
+          style={{ display: "none" }}
+          type="file"
+          accept="image/*"
+          id="petImage"
+          name="petImage"
+          onChange={handleFileInputChange}
+        />
+      </div>
+      <img
+        src={previewSource || defaultImg}
+        alt="Imagem do pet"
+        className="pet-image-preview"
       />
     </div>
   );

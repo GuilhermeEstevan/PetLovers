@@ -6,6 +6,7 @@ export type TPetContext = {
   allPets: TAllPets;
   createPet: (data: TCreatePetData) => void;
   editPet: (data: TCreatePetData, petId: string) => void;
+  deletePet: (petId: string) => void;
   pet: TCreatePetData;
   setPet: React.Dispatch<SetStateAction<TCreatePetData>>;
   createPetCard: (data: TCreatePetCardData, petId: string) => void;

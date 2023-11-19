@@ -24,15 +24,17 @@ const Wrapper = styled.section`
     margin: 0;
   }
   .form-select {
-    width: 14rem;
+    width: 15rem;
+    margin-right: 1rem;
     text-transform: capitalize;
   }
 
   .form-center {
     margin-top: 3rem;
     display: grid;
+    gap: 2rem;
     row-gap: 1.5rem;
-    max-width: 30rem;
+    max-width: 20rem;
     margin-bottom: 2rem;
   }
 
@@ -97,7 +99,7 @@ const Wrapper = styled.section`
     margin-left: 0rem;
     margin-bottom: 2rem;
 
-    img{
+    img {
       margin-left: 1rem;
     }
   }
@@ -131,7 +133,7 @@ const Wrapper = styled.section`
   @media (min-width: 1120px) {
     .form-center {
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+    
     }
     .form-center button {
       margin-top: 0;
@@ -145,7 +147,7 @@ const Wrapper = styled.section`
   }
 
   .calendar {
-    width: 14rem;
+    width: 15rem;
     margin-top: -1.72rem;
   }
 

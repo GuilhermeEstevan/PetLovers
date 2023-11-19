@@ -29,6 +29,7 @@ const FormRow = ({
         type={type}
         placeholder={placeholder}
         onChange={handleChange}
+        style={{ width: '100%' }}
       />
     </Box>
   );
