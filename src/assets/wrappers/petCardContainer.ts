@@ -28,14 +28,14 @@ const Wrapper = styled.section`
   .pet-table th {
     color: var(--white);
     font-weight: 400;
-    background-color: var(--primary-5);
+    background-color: var(--primary-2);
   }
 
   .pet-table tbody tr:nth-child(odd) {
     background-color: var(--white);
   }
   .pet-table tbody tr:nth-child(even) {
-    background-color: var(--primary-9);
+    background-color: var(--primary-8);
   }
 
   .pet-table th:last-child {

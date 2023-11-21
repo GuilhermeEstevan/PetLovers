@@ -2,11 +2,13 @@ import styled from "styled-components";
 
 const Wrapper = styled.article`
   font-family: "Roboto";
-  background: var(--white);
+  /* background: var(--white); */
+  border: 1px solid var(--grey-8);
   border-radius: var(--borderRadius);
+  width: 22rem;
   display: grid;
   grid-template-rows: 1fr auto;
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-4);
   margin: 0 auto;
 
   header {
@@ -20,8 +22,8 @@ const Wrapper = styled.article`
     }
   }
   .pet-image {
-    width: 135px;
-    height: 135px;
+    width: 185px;
+    height: 185px;
     overflow: hidden;
     border-radius: 50%;
     position: relative;
@@ -29,7 +31,7 @@ const Wrapper = styled.article`
       width: 100%;
       object-fit: cover;
       object-position: center;
-      transition: var(--transition)
+      transition: var(--transition);
     }
 
     .eye-icon {
@@ -40,19 +42,18 @@ const Wrapper = styled.article`
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 2rem;
-      transition: opacity 0.5s
+      transition: opacity 0.5s;
     }
 
     &:hover {
-    img {
-      filter: brightness(0.5); /* Torna a imagem mais escura no hover */
-    }
+      img {
+        filter: brightness(0.5); /* Torna a imagem mais escura no hover */
+      }
 
-    .eye-icon {
-      opacity: 1; /* Mostra o ícone do olho no hover */
+      .eye-icon {
+        opacity: 1; /* Mostra o ícone do olho no hover */
+      }
     }
-  }
-
   }
 
   .content {
@@ -64,21 +65,14 @@ const Wrapper = styled.article`
     justify-content: center;
     grid-template-columns: 1fr;
     row-gap: 0.5rem;
-    @media (min-width: 576px) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    @media (min-width: 992px) {
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 1120px) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
   }
+
   .info {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    min-height: 4rem;
     h3 {
       font-size: 2.2rem;
       font-weight: 500;
@@ -103,8 +97,9 @@ const Wrapper = styled.article`
     margin-top: 0.5rem;
   }
   footer {
-    margin-top: 1rem;
+    margin: 1rem 0;
     display: flex;
+    justify-content: center;
   }
 
   .btn {

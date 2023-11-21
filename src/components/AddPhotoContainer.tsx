@@ -21,7 +21,6 @@ const AddPhotoContainer = ({ petId }: TAddPhotoContainerProps) => {
       return toast.error("Nenhuma imagem foi selecionada!");
     }
     const secureUrl = await uploadImageToCloudinary(file);
-    console.log(secureUrl);
     const addGalleryPhotoData: TaddGalleryPhotoData = {
       image: secureUrl,
     };

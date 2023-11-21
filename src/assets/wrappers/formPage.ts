@@ -32,7 +32,7 @@ const Wrapper = styled.section`
   .form-center {
     margin-top: 3rem;
     display: grid;
-    gap: 2rem;
+    gap: 1rem;
     row-gap: 1.5rem;
     max-width: 20rem;
     margin-bottom: 2rem;

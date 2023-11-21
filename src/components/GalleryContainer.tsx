@@ -8,10 +8,15 @@ type TGalleryContainerProps = {
 };
 
 const GalleryContainer = ({ petId }: TGalleryContainerProps) => {
-  const { singlePet, getSinglePet } = usePetContext();
+  const { singlePet, getSinglePet, setPageLoading, setSinglePet } =
+    usePetContext();
 
   useEffect(() => {
     getSinglePet(petId);
+    return () => {
+      setPageLoading(true);
+      setSinglePet(null);
+    };
   }, []);
 
   return (

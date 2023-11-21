@@ -106,6 +106,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Cadastro do Pet removido!");
+      getAllPets();
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -203,7 +204,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       );
       console.log(response);
       setIsLoading(false);
-      return response.data.secure_url;
+      const secureUrl = response.data.secure_url;
+      return secureUrl;
     } catch (error) {
       toast.error("Erro no upload");
       setIsLoading(false);
@@ -213,6 +215,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const addGalleryPhoto = async (petId: string, data: TaddGalleryPhotoData) => {
     try {
       setIsLoading(true);
+      console.log(data);
+
       const response = await customFetch.patch(`/pets/${petId}/gallery`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });

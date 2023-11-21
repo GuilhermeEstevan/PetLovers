@@ -7,16 +7,19 @@ import { format } from "date-fns";
 
 const PetCardContainer = () => {
   const { petId } = useParams();
-  const { getSinglePet, singlePet } = usePetContext();
+  const { getSinglePet, singlePet, setPageLoading, setSinglePet } =
+    usePetContext();
   const navigate = useNavigate();
   useEffect(() => {
     if (!petId) {
       return navigate("/");
     }
     getSinglePet(petId);
+    return () => {
+      setPageLoading(true);
+      setSinglePet(null);
+    };
   }, []);
-
-  
 
   return (
     <Wrapper>

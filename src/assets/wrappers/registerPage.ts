@@ -26,7 +26,8 @@ const Wrapper = styled.section`
   h1 {
     font-weight: 800;
     span {
-      color: var(--primary-7);
+      color: var(--primary-5);
+      
     }
   }
 
@@ -42,7 +43,7 @@ const Wrapper = styled.section`
 
   .form {
     max-width: 400px;
-    border-top: 5px solid var(--primary-5);
+    border-top: 5px solid var(--primary-2);
     background: rgba(
       255,
       255,
@@ -68,7 +69,7 @@ const Wrapper = styled.section`
     background: transparent;
     font-weight: 800;
     border: transparent;
-    color: var(--primary-5);
+    color: var(--primary-3);
     cursor: pointer;
     letter-spacing: var(--letterSpacing);
   }

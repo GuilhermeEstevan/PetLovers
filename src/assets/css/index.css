@@ -1,5 +1,6 @@
 /* FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bevan&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -224,7 +225,7 @@ p {
 .btn {
   cursor: pointer;
   color: var(--white);
-  background: var(--primary-5);
+  background: var(--primary-2);
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
@@ -235,7 +236,7 @@ p {
   display: inline-block;
 }
 .btn:hover {
-  background: var(--primary-5);
+  background: var(--primary-3);
   box-shadow: var(--shadow-3);
 }
 .btn-hipster {

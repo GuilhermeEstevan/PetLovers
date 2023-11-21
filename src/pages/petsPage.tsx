@@ -22,27 +22,28 @@ const PetsPage = () => {
 
   return (
     <Wrapper>
-      <div className="welcome-section">
-        <h3>Reuna seus pets num só lugar!</h3>
-      </div>
+      <div className="welcome-section"></div>
 
-      <div className="pets">
-        {pets?.map((pet) => {
-          const { name, breed, color, photo, birthday, gender, _id } = pet;
+      <div className="pets-container">
+        <p>Meus Pets</p>
+        <div className="pets">
+          {pets?.map((pet) => {
+            const { name, breed, color, photo, birthday, gender, _id } = pet;
 
-          return (
-            <Pet
-              name={name}
-              breed={breed}
-              color={color}
-              id={_id}
-              photo={photo}
-              birthday={birthday}
-              gender={gender}
-              key={pet._id}
-            />
-          );
-        })}
+            return (
+              <Pet
+                name={name}
+                breed={breed}
+                color={color}
+                id={_id}
+                photo={photo}
+                birthday={birthday}
+                gender={gender}
+                key={pet._id}
+              />
+            );
+          })}
+        </div>
       </div>
     </Wrapper>
   );

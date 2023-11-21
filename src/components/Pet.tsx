@@ -30,7 +30,6 @@ const Pet = (data: TPetMain) => {
         <div className="content-center">
           <div className="info">
             <h3>{name}</h3>
-            <p>{breed}</p>
           </div>
         </div>
         <footer className="actions">

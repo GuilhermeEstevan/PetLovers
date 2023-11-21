@@ -7,7 +7,7 @@ const Wrapper = styled.nav`
   justify-content: center;
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.1);
   z-index: 2;
-  background: var(--primary-3);
+  background: var(--primary-2);
 
   .logo {
     display: flex;
@@ -39,7 +39,7 @@ const Wrapper = styled.nav`
     justify-content: center;
     gap: 0 0.5rem;
     position: relative;
-    background-color: var(--primary-5);
+    background-color: var(--primary-3);
     box-shadow: var(--shadow-2);
   }
 
@@ -48,7 +48,7 @@ const Wrapper = styled.nav`
     top: 40px;
     left: 0;
     width: 100%;
-    background: var(--primary-5);
+    background: var(--primary-3);
     box-shadow: var(--shadow-2);
     padding: 0.5rem;
     text-align: center;
