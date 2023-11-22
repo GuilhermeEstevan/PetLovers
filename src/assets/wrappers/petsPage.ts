@@ -27,11 +27,13 @@ const Wrapper = styled.section`
     justify-content: center;
     align-items: center;
     background-image: url(${puppies});
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    background-repeat: repeat;
-    height: 25rem;
+    background-repeat: no-repeat;
+    height: 20rem;
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     text-align: center;
   }
   p {
@@ -56,22 +58,31 @@ const Wrapper = styled.section`
     margin-top: 2rem; /* Ajuste conforme necessário */
   }
 
+  @media (min-width: 880px) {
+    .welcome-section {
+      background-size: cover;
+      height: 25rem;
+    }
+   
+  }
   @media (min-width: 992px) {
     .welcome-section {
-      height: 35rem;
+      height: 25rem;
     }
     p {
       font-family: "Bevan", serif;
       font-size: 2rem;
     }
   }
+  @media (min-width: 1200px) {
+    .welcome-section {
+      height: 30rem;
+    }
+  
+  }
+
 
   @media (min-width: 1600px) {
-    /* .pets {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
-    } */
 
     .welcome-section {
       height: 40rem;

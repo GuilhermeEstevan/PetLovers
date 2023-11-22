@@ -2,7 +2,6 @@ import Wrapper from "../assets/wrappers/landingPage";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdPets } from "react-icons/md";
 import paw from "../assets/images/footprints-309158_1920.png";
-import logo from "../assets/images/petLoversLogoCut.jpeg";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {

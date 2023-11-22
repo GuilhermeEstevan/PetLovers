@@ -8,6 +8,7 @@ import dogFooter from "../images/cute-sweet-puppy-australianmedium.jpg";
 const Wrapper = styled.main`
   nav {
     background: var(--primary-2);
+
     height: 5rem;
     display: flex;
     align-items: center;
@@ -22,9 +23,6 @@ const Wrapper = styled.main`
     }
   }
 
-  .logo {
-    width: 6rem;
-  }
 
   h1 {
     font-weight: 800;
@@ -84,6 +82,7 @@ const Wrapper = styled.main`
   .logo-text {
     display: flex;
     align-items: center;
+    font-size: 3rem;
   }
   h3 {
     font-weight: 800;
@@ -92,7 +91,7 @@ const Wrapper = styled.main`
     }
   }
   .pawn-icon {
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin-left: 4px;
   }
 

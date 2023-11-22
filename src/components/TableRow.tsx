@@ -28,7 +28,7 @@ const TableRow = ({
   };
 
   const handleEditBtn = () => {
-    console.log(date);
+    console.log(id);
 
     setIsEditing(true);
     SetEditingCardInfo({

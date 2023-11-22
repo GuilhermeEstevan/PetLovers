@@ -65,6 +65,7 @@ const PetCardForm = () => {
     editPetCard,
     editingCardInfo,
     setIsEditing,
+    singlePet,
   } = usePetContext();
   const { petId } = useParams();
 
@@ -77,6 +78,8 @@ const PetCardForm = () => {
 
     const formattedDate = moment(petCard.date, "DD/MM/YYYY").toISOString();
     if (isEditing) {
+      console.log(editingCardInfo);
+
       const id = editingCardInfo?._id;
       if (!id) return console.log("Id não encontrado!");
       editPetCard(petId, id, { ...petCard, date: formattedDate });
@@ -95,8 +98,6 @@ const PetCardForm = () => {
   };
 
   useEffect(() => {
-    console.log(editingCardInfo);
-
     if (isEditing && editingCardInfo) {
       setSelectedServiceType(editingCardInfo.serviceType);
       setPetCard({
@@ -111,7 +112,7 @@ const PetCardForm = () => {
   return (
     <Wrapper>
       <form className="form">
-        <h3>Carteirinha do pet</h3>
+        <h3>Carteirinha de {singlePet?.name}</h3>
         <div className="form-center">
           <FormRowSelect
             name="serviceType"

@@ -25,7 +25,6 @@ const Wrapper = styled.section`
   }
   .form-select {
     width: 15rem;
-    margin-right: 1rem;
     text-transform: capitalize;
   }
 
@@ -54,7 +53,7 @@ const Wrapper = styled.section`
     column-gap: 1rem;
     align-self: flex-end;
     margin-top: 0.5rem;
-    max-width: 32rem;
+    max-width: 31.3rem;
     button {
       height: 35px;
     }
@@ -66,8 +65,8 @@ const Wrapper = styled.section`
     background: var(--grey-5);
   }
   .pet-image-preview {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     overflow: hidden;
     border-radius: 50%;
     margin-left: 3rem;
@@ -79,8 +78,8 @@ const Wrapper = styled.section`
   }
 
   .gallery-preview {
-    width: 130px;
-    height: 130px;
+    width: 140px;
+    height: 140px;
     overflow: hidden;
     border-radius: 10%;
     margin: 1rem;

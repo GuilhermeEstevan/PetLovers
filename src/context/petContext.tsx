@@ -87,6 +87,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const editPet = async (data: TCreatePetData, petId: string) => {
     try {
       setIsLoading(true);
+      console.log(data);
       const response = await customFetch.patch(`pets/editPet/${petId}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -123,6 +124,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         },
       });
       setSinglePet(response.data);
+      console.log(response.data);
 
       setIsLoading(false);
     } catch (error) {
