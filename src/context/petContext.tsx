@@ -103,7 +103,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const deletePet = async (petId: string) => {
     try {
       setIsLoading(true);
-      const response = await customFetch.delete(`/pets/deletePet/${petId}`, {
+      await customFetch.delete(`/pets/deletePet/${petId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Cadastro do Pet removido!");
