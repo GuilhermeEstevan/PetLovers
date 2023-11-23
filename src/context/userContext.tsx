@@ -80,6 +80,18 @@ export const UserProvider = ({ children }: TUserContextProps) => {
     removeUserFromLocalStorage();
   };
 
+  const sendResetEmailPassword = async (email: string) => {
+    try {
+      setIsloading(true);
+      await customFetch.post("/auth/resetPassword", { email });
+      toast.success("Acesse seu e-mail para redefinir a senha!");
+      setIsloading(false);
+    } catch (error: any) {
+      toast.error(error.response.data);
+      setIsloading(false);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -90,7 +102,8 @@ export const UserProvider = ({ children }: TUserContextProps) => {
         user,
         isLoading,
         updateUser,
-        logoutUser
+        logoutUser,
+        sendResetEmailPassword,
       }}
     >
       {children}

@@ -7,6 +7,7 @@ export type TUserContext = {
   logoutUser: () => void;
   user: TUser | null;
   isLoading: boolean;
+  sendResetEmailPassword: (email: string) => void;
 };
 
 export type TUser = {

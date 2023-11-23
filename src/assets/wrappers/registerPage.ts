@@ -5,12 +5,10 @@ const Wrapper = styled.section`
   display: grid;
   align-items: center;
 
-
   background-image: url(${puppies}); // Use a variável que contém o caminho para a imagem
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
 
   .logo {
     display: block;
@@ -27,7 +25,6 @@ const Wrapper = styled.section`
     font-weight: 800;
     span {
       color: var(--primary-5);
-      
     }
   }
 
@@ -55,6 +52,7 @@ const Wrapper = styled.section`
 
   h3 {
     text-align: center;
+    margin-bottom: 2rem;
   }
   p {
     margin: 0;
@@ -74,7 +72,23 @@ const Wrapper = styled.section`
     letter-spacing: var(--letterSpacing);
   }
 
-  .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+  .forget-password {
+    display: flex;
+    margin-top: -1.4rem;
+    p {
+      cursor: pointer;
+    }
+  }
+
+  .reset-password {
+    margin: 0 auto;
+    p {
+      margin-bottom: 2rem;
+      max-width: 20rem;
+    }
+  }
+
+  .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
     width: 100%;
   }
 `;

@@ -36,6 +36,7 @@ const RegisterPage = () => {
 
     if (!email || !password || (!isMember && !name)) {
       toast.error("Preencha todos os campos");
+      return;
     }
 
     if (!isMember) {
@@ -44,6 +45,10 @@ const RegisterPage = () => {
     }
 
     loginUser({ email, password });
+  };
+
+  const handleForgotPassword = () => {
+    navigate("/resetPassword");
   };
 
   useEffect(() => {
@@ -92,6 +97,9 @@ const RegisterPage = () => {
           labelText="Senha"
           handleChange={handlePassword}
         />
+        <div className="forget-password" onClick={handleForgotPassword}>
+          {isMember && <p>Esqueci a senha</p>}
+        </div>
         <button type="submit" className="btn btn-block" disabled={isLoading}>
           {isLoading ? "Carregando..." : "Enviar"}
         </button>

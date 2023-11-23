@@ -9,6 +9,9 @@ import GalleryPage from "../pages/galleryPage";
 import PetCard from "../pages/petCard";
 import ProtectedRoute from "../pages/protectedRoute";
 import PetProfile from "../pages/petProfile";
+import ResetPassword from "../pages/resetPassword";
+import NewPassword from "../pages/newPassword";
+import Error from "../pages/error";
 
 const RoutesMain = () => {
   return (
@@ -31,6 +34,9 @@ const RoutesMain = () => {
         </Route>
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/resetPassword" element={<ResetPassword />} />
+        <Route path="/newPassword" element={<NewPassword />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
