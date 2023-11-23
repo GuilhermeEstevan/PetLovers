@@ -84,15 +84,17 @@ const Wrapper = styled.nav`
     .logo-text {
       display: flex;
       align-items: center;
+      font-size: 2.5rem;
     }
     h3 {
       font-weight: 800;
       span {
         color: var(--primary-7);
+        
       }
     }
     .pawn-icon {
-      font-size: 1.5rem;
+      font-size: 2.5rem;
       margin-left: 4px;
     }
 

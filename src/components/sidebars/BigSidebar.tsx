@@ -1,4 +1,4 @@
-import Logo from "../Logo";
+
 import Wrapper from "../../assets/wrappers/BigSidebar";
 import NavLinks from "../navLinks";
 import { useUserContext } from "../../context/userContext";

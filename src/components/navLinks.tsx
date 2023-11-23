@@ -17,6 +17,21 @@ const NavLinks = ({ toggleSidebar }: TToggleSidebar) => {
       {links.map((link: TLinks) => {
         const { text, path, icon, id } = link;
 
+        if (path.startsWith("http")) {
+          return (
+            <a
+              href={path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link"
+              key={id}
+            >
+              <span className="icon">{icon}</span>
+              {text}
+            </a>
+          );
+        }
+
         return (
           <NavLink
             to={path}

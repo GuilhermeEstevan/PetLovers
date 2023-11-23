@@ -54,10 +54,10 @@ const Wrapper = styled.aside`
     transition: var(--transition);
   }
   .nav-link:hover {
-    color: var(--grey-9);
+    color: var(--grey-7);
   }
   .nav-link:hover .icon {
-    color: var(--primary-5);
+    color: var(--primary-3);
   }
   .icon {
     font-size: 1.5rem;
@@ -67,10 +67,10 @@ const Wrapper = styled.aside`
     transition: var(--transition);
   }
   .active {
-    color: var(--grey-9);
+    color: var(--grey-7);
   }
   .active .icon {
-    color: var(--primary-5);
+    color: var(--primary-3);
   }
 `
 export default Wrapper

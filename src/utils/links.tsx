@@ -25,10 +25,9 @@ const links = [
   {
     id: 4,
     text: "Adote!",
-    path: "adote",
+    path: "https://www.instagram.com/anjinhos4patas",
     icon: <BiHomeHeart />,
   },
 ];
 
 export default links;
-
