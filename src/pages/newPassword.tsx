@@ -1,13 +1,18 @@
 import { useState } from "react";
-import Wrapper from "../assets/wrappers/registerPage";
+import Wrapper from "../assets/wrappers/resetPassword";
 import Logo from "../components/Logo";
 import FormRow from "../components/forms/FormRow";
 import { MdPets } from "react-icons/md";
 import { useUserContext } from "../context/userContext";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const NewPassword = () => {
-  const { isLoading } = useUserContext();
+  const { token } = useParams();
+  const navigate = useNavigate();
+  console.log(token);
+
+  const { isLoading, resetPassword } = useUserContext();
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,26 +23,43 @@ const NewPassword = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (!password) {
+    if (!token) {
+      toast.error("token inválido!");
+      return;
+    }
+
+    if (!password || !confirmPassword) {
       toast.error("Preencha todos os campos");
       return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error("As senhas são incompatíveis");
+      return;
+    }
+
+    const resetSuccess = await resetPassword(password, token);
+    if (resetSuccess) {
+      navigate("/register");
+      return;
+    } else {
+      navigate("/resetPassword");
     }
   };
 
   return (
     <Wrapper className="full-page">
-      <nav>
-        {" "}
+      <div className="logo">
         <h1>
           Pet <span>Lovers</span>{" "}
           <span className="pawn-icon">
             <MdPets />
           </span>
         </h1>
-      </nav>
+      </div>
       <form className="form reset-password" onSubmit={handleSubmit}>
         <Logo />
         <h3>redefinir senha</h3>
@@ -47,7 +69,7 @@ const NewPassword = () => {
 
         {/* PASSWORD */}
         <FormRow
-          type="text"
+          type="password"
           name="password"
           value={password}
           labelText="Senha"
@@ -55,10 +77,10 @@ const NewPassword = () => {
         />
         {/* PASSWORD */}
         <FormRow
-          type="text"
-          name="password"
+          type="password"
+          name="confirmPassword"
           value={confirmPassword}
-          labelText="Senha"
+          labelText="Confirme a Senha"
           handleChange={handleConfirmPassword}
         />
         <button type="submit" className="btn btn-block" disabled={isLoading}>

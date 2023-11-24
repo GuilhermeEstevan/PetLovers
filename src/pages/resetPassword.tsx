@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
-import Wrapper from "../assets/wrappers/registerPage";
+import { useState } from "react";
+import Wrapper from "../assets/wrappers/resetPassword";
 import Logo from "../components/Logo";
 import FormRow from "../components/forms/FormRow";
 import { MdPets } from "react-icons/md";
 import { useUserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const ResetPassword = () => {
   const { isLoading, sendResetEmailPassword } = useUserContext();
-  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const handleEmail = (e: any) => {
@@ -27,27 +25,16 @@ const ResetPassword = () => {
     sendResetEmailPassword(email);
   };
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
-
-    if (token) {
-      // Se há um token, redirecione para NewPassword
-      navigate(`/newPassword?token=${token}`);
-    }
-  }, []);
-
   return (
     <Wrapper className="full-page">
-      <nav>
-        {" "}
+      <div className="logo">
         <h1>
           Pet <span>Lovers</span>{" "}
           <span className="pawn-icon">
             <MdPets />
           </span>
         </h1>
-      </nav>
+      </div>
       <form className="form reset-password" onSubmit={handleSubmit}>
         <Logo />
         <h3>redefinir senha</h3>

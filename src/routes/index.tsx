@@ -35,7 +35,7 @@ const RoutesMain = () => {
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="/newPassword" element={<NewPassword />} />
+        <Route path="/resetPassword/:token" element={<NewPassword />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

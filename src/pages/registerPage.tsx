@@ -91,7 +91,7 @@ const RegisterPage = () => {
         />
         {/* PASSWORD */}
         <FormRow
-          type="text"
+          type="password"
           name="password"
           value={password}
           labelText="Senha"

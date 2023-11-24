@@ -8,6 +8,7 @@ export type TUserContext = {
   user: TUser | null;
   isLoading: boolean;
   sendResetEmailPassword: (email: string) => void;
+  resetPassword: (password: string, token: string) => Promise<boolean>;
 };
 
 export type TUser = {

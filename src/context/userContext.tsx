@@ -92,6 +92,24 @@ export const UserProvider = ({ children }: TUserContextProps) => {
     }
   };
 
+  const resetPassword = async (password: string, token: string) => {
+    try {
+      setIsloading(true);
+      const response = await customFetch.patch(`/auth/resetPassword/${token}`, {
+        password,
+      });
+      console.log(response);
+      toast.success("Senha atualizada com sucesso!");
+      setIsloading(false);
+      return true;
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data);
+      setIsloading(false);
+      return false;
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -104,6 +122,7 @@ export const UserProvider = ({ children }: TUserContextProps) => {
         updateUser,
         logoutUser,
         sendResetEmailPassword,
+        resetPassword,
       }}
     >
       {children}
