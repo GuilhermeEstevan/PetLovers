@@ -7,6 +7,11 @@ import { format } from "date-fns";
 import { TPetCardData } from "../interface/petInterface";
 import { FaChevronDown, FaArrowDown, FaArrowUp } from "react-icons/fa";
 
+type TDisplayPetCardsResult = {
+  filteredPetCards: TPetCardData[];
+  jsx: JSX.Element;
+};
+
 const PetCardContainer = () => {
   const { petId } = useParams();
   const { getSinglePet, singlePet, setPageLoading, setSinglePet } =
@@ -14,7 +19,8 @@ const PetCardContainer = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!petId) {
-      return navigate("/");
+      navigate("/");
+      return;
     }
     getSinglePet(petId);
     return () => {
@@ -29,7 +35,7 @@ const PetCardContainer = () => {
   const [selectedServiceType, setSelectedServiceType] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
-  const displayPetCards = () => {
+  const displayPetCards = (): TDisplayPetCardsResult => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
@@ -51,30 +57,33 @@ const PetCardContainer = () => {
         return dateB - dateA;
       }
     });
-
     const currentPetCards = filteredPetCards.slice(startIndex, endIndex);
 
-    return (
-      <tbody>
-        {currentPetCards?.map((item: TPetCardData) => {
-          const { serviceType, service, date, description, _id } = item;
+    return {
+      filteredPetCards,
+      jsx: (
+        <tbody>
+          {currentPetCards?.map((item: TPetCardData) => {
+            const { serviceType, service, date, description, _id } = item;
+            const doseNumber = item.vaccineInfo?.doseNumber;
+            const formattedDate = format(new Date(date), "dd/MM/yyyy");
 
-          const formattedDate = format(new Date(date), "dd/MM/yyyy");
-
-          return (
-            <TableRow
-              key={_id}
-              petId={petId}
-              id={_id}
-              serviceType={serviceType}
-              service={service}
-              description={description}
-              date={formattedDate}
-            />
-          );
-        })}
-      </tbody>
-    );
+            return (
+              <TableRow
+                key={_id}
+                petId={petId}
+                id={_id}
+                serviceType={serviceType}
+                service={service}
+                description={description}
+                date={formattedDate}
+                doseNumber={doseNumber}
+              />
+            );
+          })}
+        </tbody>
+      ),
+    };
   };
 
   const nextPage = () => {
@@ -107,6 +116,10 @@ const PetCardContainer = () => {
     setSortOrder((prevSortOrder) => (prevSortOrder === "asc" ? "desc" : "asc"));
   };
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedServiceType]);
+
   return (
     <Wrapper>
       <table className="pet-table">
@@ -135,6 +148,9 @@ const PetCardContainer = () => {
                     <div onClick={() => handleServiceTypeChange("banho")}>
                       Banho
                     </div>
+                    <div onClick={() => handleServiceTypeChange("tosa")}>
+                      Tosa
+                    </div>
                   </div>
                 )}
               </div>
@@ -149,9 +165,9 @@ const PetCardContainer = () => {
             <th>Ações</th>
           </tr>
         </thead>
-        {displayPetCards()}
+        {displayPetCards().jsx}
       </table>
-      {singlePet?.petCards && singlePet.petCards.length > itemsPerPage && (
+      {displayPetCards().filteredPetCards.length > itemsPerPage && (
         <div className="page-controller">
           <button
             onClick={prevPage}

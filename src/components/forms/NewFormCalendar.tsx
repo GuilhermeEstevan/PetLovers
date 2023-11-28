@@ -25,14 +25,12 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
     const dateString = newDate ? newDate.format("DD/MM/YYYY") : null;
     setDate(dateString);
     setValue(newDate);
-    console.log(newDate);
   };
 
   useEffect(() => {
     if (isEditing) {
       const editingDate = dayjs(editingCardInfo?.date, "DD/MM/YYYY");
       setValue(editingDate);
-      console.log(editingDate);
     }
   }, [isEditing]);
 
@@ -56,6 +54,12 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
               label={labelText}
               format="DD/MM/YYYY"
               value={date ? value : null}
+              disableFuture
+              slotProps={{
+                field: {
+                  readOnly: true,
+                },
+              }}
               onChange={handleChangeDate}
               key={date ? value?.toString() : "null"}
             />

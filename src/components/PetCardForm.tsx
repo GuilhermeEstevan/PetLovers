@@ -8,6 +8,7 @@ import { TCreatePetCardData } from "../interface/petInterface";
 import FormRowSelect from "./forms/FormRowSelect";
 import { Vaccines, HealthExams } from "../utils/vaccinesAndExams";
 import moment from "moment";
+import { toast } from "react-toastify";
 
 const PetCardForm = () => {
   const petCardInitialState = {
@@ -15,6 +16,7 @@ const PetCardForm = () => {
     service: "",
     description: "",
     date: "",
+    doseNumber: "",
   };
   const [petCard, setPetCard] =
     useState<TCreatePetCardData>(petCardInitialState);
@@ -40,6 +42,7 @@ const PetCardForm = () => {
           ...petCard,
           [name]: value,
           service: "", // Reinicia a escolha do serviço ao mudar o tipo do serviço
+          doseNumber: "", // Reinicia a escolha da dose ao mudar o tipo do serviço
         });
       }
     } else {
@@ -76,6 +79,15 @@ const PetCardForm = () => {
       return navigate("/");
     }
 
+    if (
+      !petCard.serviceType ||
+      !petCard.date ||
+      (petCard.serviceType === "vacina" && !petCard.doseNumber)
+    ) {
+      toast.error("Preencha os Campos !");
+      return;
+    }
+
     const formattedDate = moment(petCard.date, "DD/MM/YYYY").toISOString();
     if (isEditing) {
       console.log(editingCardInfo);
@@ -99,12 +111,14 @@ const PetCardForm = () => {
 
   useEffect(() => {
     if (isEditing && editingCardInfo) {
+      console.log(editingCardInfo);
       setSelectedServiceType(editingCardInfo.serviceType);
       setPetCard({
         serviceType: editingCardInfo?.serviceType,
         service: editingCardInfo?.service,
         description: editingCardInfo?.description,
         date: editingCardInfo.date,
+        doseNumber: editingCardInfo.doseNumber,
       });
     }
   }, [isEditing]);
@@ -143,13 +157,24 @@ const PetCardForm = () => {
                 }
               />
             )}
-          <FormRow
-            type="text"
-            name="description"
-            value={petCard.description}
-            handleChange={handleJobInput}
-            labelText="Descrição"
-          />
+          {selectedServiceType === "vacina" ? (
+            <FormRowSelect
+              name="doseNumber"
+              value={petCard.doseNumber || ""}
+              handleChange={handleJobInput}
+              labelText="Dose"
+              list={["primeira", "segunda", "terceira"]}
+            />
+          ) : (
+            <FormRow
+              type="text"
+              name="description"
+              value={petCard.description}
+              handleChange={handleJobInput}
+              labelText="Descrição"
+            />
+          )}
+
           <NewFormCalendar
             date={petCard.date}
             setDate={handleDateChange}

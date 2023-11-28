@@ -89,7 +89,6 @@ const Wrapper = styled.section`
   .page-btn:disabled {
     background-color: #ddd; /* Cor de fundo quando desativado */
     color: #999; /* Cor do texto quando desativado */
-    cursor: not-allowed; /* Altera o cursor quando desativado */
   }
 
   .current-page {

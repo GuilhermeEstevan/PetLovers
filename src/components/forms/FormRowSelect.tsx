@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 type TformRowSelect = {
   name: string;
-  value: string;
+  value: string | number;
   handleChange: (e: any) => any;
   labelText?: string;
   list: string[];

@@ -21,8 +21,8 @@ export type TPetContext = {
   ) => void;
   isEditing: boolean;
   setIsEditing: React.Dispatch<SetStateAction<boolean>>;
-  editingCardInfo: TPetCardData | null;
-  SetEditingCardInfo: React.Dispatch<SetStateAction<TPetCardData | null>>;
+  editingCardInfo: TEditPetCardData | null;
+  SetEditingCardInfo: React.Dispatch<SetStateAction<TEditPetCardData | null>>;
   addGalleryPhoto: (petid: string, image: TaddGalleryPhotoData) => void;
   deleteGalleryPhoto: (petId: string, imageId: string) => void;
   uploadImageToCloudinary: (file: any) => Promise<string>;
@@ -81,14 +81,31 @@ export type TCreatePetCardData = {
   service: string;
   description: string;
   date: string;
+  doseNumber?: string;
 };
 
 export type TPetCardData = {
+  _id: string;
   serviceType: string;
   service: string;
   description: string;
   date: string;
+  vaccineInfo?: TVaccineInfo;
+};
+
+export type TEditPetCardData = {
   _id: string;
+  serviceType: string;
+  service: string;
+  description: string;
+  date: string;
+  doseNumber?: string;
+};
+
+export type TVaccineInfo = {
+  vaccineType: string;
+  doseNumber: string;
+  nextDueDate: string;
 };
 
 export type TaddGalleryPhotoData = {

@@ -97,8 +97,8 @@ const RegisterPage = () => {
           labelText="Senha"
           handleChange={handlePassword}
         />
-        <div className="forget-password" onClick={handleForgotPassword}>
-          {isMember && <p>Esqueci a senha</p>}
+        <div className="forget-password">
+          {isMember && <p onClick={handleForgotPassword}>Esqueci a senha</p>}
         </div>
         <button type="submit" className="btn btn-block" disabled={isLoading}>
           {isLoading ? "Carregando..." : "Enviar"}

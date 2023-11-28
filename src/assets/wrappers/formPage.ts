@@ -8,6 +8,7 @@ const Wrapper = styled.section`
   box-shadow: var(--shadow-2);
   max-width: var(--max-width);
   margin: 0 auto;
+
   h3 {
     margin-top: 0;
   }
@@ -23,6 +24,7 @@ const Wrapper = styled.section`
     width: 15rem;
     margin: 0;
   }
+
   .form-select {
     width: 15rem;
     text-transform: capitalize;
@@ -132,7 +134,6 @@ const Wrapper = styled.section`
   @media (min-width: 1120px) {
     .form-center {
       grid-template-columns: 1fr 1fr;
-    
     }
     .form-center button {
       margin-top: 0;

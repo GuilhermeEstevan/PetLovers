@@ -74,6 +74,7 @@ const Wrapper = styled.section`
 
   .forget-password {
     display: flex;
+    width: 100%;
     margin-top: -1.4rem;
     p {
       cursor: pointer;

@@ -8,6 +8,7 @@ type TCardInfo = {
   date: string;
   id: string;
   petId?: string;
+  doseNumber: string | undefined;
 };
 
 const TableRow = ({
@@ -17,6 +18,7 @@ const TableRow = ({
   date,
   id,
   petId,
+  doseNumber,
 }: TCardInfo) => {
   const { deletePetCard, SetEditingCardInfo, setIsEditing } = usePetContext();
 
@@ -28,8 +30,6 @@ const TableRow = ({
   };
 
   const handleEditBtn = () => {
-    console.log(id);
-
     setIsEditing(true);
     SetEditingCardInfo({
       _id: id,
@@ -37,13 +37,16 @@ const TableRow = ({
       service,
       description,
       date,
+      doseNumber,
     });
   };
 
   return (
     <tr>
       <td>{service}</td>
-      <td>{description}</td>
+      <td>
+        {service.startsWith("Vacina") ? `${doseNumber} dose` : description}
+      </td>
       <td>{date}</td>
       <td className="cardBtns">
         <button className="btn edit-btn" onClick={handleEditBtn}>

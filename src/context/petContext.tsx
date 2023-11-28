@@ -3,8 +3,8 @@ import {
   TAllPets,
   TCreatePetCardData,
   TCreatePetData,
+  TEditPetCardData,
   TPet,
-  TPetCardData,
   TPetContext,
   TPetContextProps,
   TaddGalleryPhotoData,
@@ -23,7 +23,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [editingCardInfo, SetEditingCardInfo] = useState<TPetCardData | null>(
+  const [editingCardInfo, SetEditingCardInfo] = useState<TEditPetCardData | null>(
     null
   );
   const [singlePet, setSinglePet] = useState<TPet | null>(null);
