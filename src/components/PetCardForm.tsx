@@ -163,7 +163,7 @@ const PetCardForm = () => {
               value={petCard.doseNumber || ""}
               handleChange={handleJobInput}
               labelText="Dose"
-              list={["primeira", "segunda", "terceira"]}
+              list={["primeira", "segunda", "terceira", "reforço anual"]}
             />
           ) : (
             <FormRow

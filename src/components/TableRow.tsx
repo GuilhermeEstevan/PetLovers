@@ -45,7 +45,11 @@ const TableRow = ({
     <tr>
       <td>{service}</td>
       <td>
-        {service.startsWith("Vacina") ? `${doseNumber} dose` : description}
+        {service.startsWith("Vacina")
+          ? doseNumber === "reforço anual"
+            ? `${doseNumber}`
+            : `${doseNumber} dose`
+          : description}
       </td>
       <td>{date}</td>
       <td className="cardBtns">
