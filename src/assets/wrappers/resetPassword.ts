@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import bg from "../images/labrador-retriever.jpg";
+import bg from "../images/adorable-white-bulldog-puppy-portrait.jpg";
 
 const Wrapper = styled.section`
   display: grid;
   align-items: center;
-
   background-image: url(${bg}); // Use a variável que contém o caminho para a imagem
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
 
   .logo {
     display: block;

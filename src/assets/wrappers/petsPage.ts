@@ -54,8 +54,43 @@ const Wrapper = styled.section`
   .pets-container {
     display: flex;
     flex-direction: column;
-    padding: 2rem; /* Adicione padding ou ajuste conforme necessário */
-    margin-top: 2rem; /* Ajuste conforme necessário */
+    padding: 2rem;
+  }
+
+  .empty-pet {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    color: var(--grey-2);
+    h4 {
+      margin: 2rem 0;
+    }
+    .adoption-photo {
+      width: 185px;
+      height: 185px;
+      overflow: hidden;
+      border-radius: 50%;
+      position: relative;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: var(--transition);
+      &:hover {
+        filter: brightness(0.8); /* Torna a imagem mais escura no hover */
+        cursor: pointer;
+      }
+    }
+
+    @media (min-width: 880px) {
+      .adoption-photo {
+        width: 320px;
+        height: 320px;
+      }
+    }
   }
 
   @media (min-width: 880px) {
@@ -63,7 +98,6 @@ const Wrapper = styled.section`
       background-size: cover;
       height: 25rem;
     }
-   
   }
   @media (min-width: 992px) {
     .welcome-section {
@@ -78,12 +112,9 @@ const Wrapper = styled.section`
     .welcome-section {
       height: 30rem;
     }
-  
   }
 
-
   @media (min-width: 1600px) {
-
     .welcome-section {
       height: 40rem;
     }

@@ -12,7 +12,7 @@ const links = [
   },
   {
     id: 2,
-    text: "Adcionar Pet",
+    text: "Cadastrar Pet",
     path: "addPet",
     icon: <SiDatadog />,
   },

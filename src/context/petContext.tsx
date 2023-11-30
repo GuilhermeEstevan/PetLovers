@@ -149,6 +149,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       );
       console.log(response);
       getSinglePet(petId);
+      toast.success("Cartão preenchido!")
       setIsLoading(false);
     } catch (error) {
       console.log(error);
