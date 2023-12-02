@@ -54,7 +54,6 @@ const Wrapper = styled.section`
   .pets-container {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
   }
 
   .empty-pet {

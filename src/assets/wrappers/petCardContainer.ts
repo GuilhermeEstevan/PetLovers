@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 2rem;
   border-radius: var(--borderRadius);
@@ -19,7 +19,7 @@ const Wrapper = styled.section`
   }
 
   .pet-table td {
-    padding: 8px;
+    padding: 8px 2px;
     text-align: left;
     border: 1px solid var(--grey-9);
   }
@@ -34,7 +34,7 @@ const Wrapper = styled.section`
 
     &:not(:first-child):not(:last-child) {
       /* Apply padding to all th except the first one */
-      padding-left: 8px;
+      padding-left: 2px;
     }
   }
 

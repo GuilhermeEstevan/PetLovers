@@ -4,7 +4,7 @@ const Wrapper = styled.section`
   border-radius: var(--borderRadius);
   width: 90%;
   background: var(--white);
-  padding: 3rem 2rem 4rem;
+  padding: 3rem 4rem;
   box-shadow: var(--shadow-2);
   max-width: var(--max-width);
   margin: 0 auto;

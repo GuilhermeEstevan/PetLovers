@@ -9,6 +9,7 @@ import { Typography, Box } from "@mui/material";
 import dayjs from "dayjs";
 import { usePetContext } from "../../context/petContext";
 
+
 dayjs.locale("pt-br");
 
 type TFormCalendar = {
@@ -43,7 +44,10 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
 
   return (
     <div className="form-row calendar">
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <LocalizationProvider
+        dateAdapter={AdapterDayjs}
+        localeText={{ cancelButtonLabel: "cancelar" }}
+      >
         <DemoContainer components={["DatePicker"]}>
           <Box>
             <Typography

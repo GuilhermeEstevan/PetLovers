@@ -138,6 +138,7 @@ const Wrapper = styled.main`
   }
 
   .our-services {
+    margin-top: 10rem;
     height: 30vh;
     display: flex;
 
@@ -201,7 +202,7 @@ const Wrapper = styled.main`
   }
 
   .footer-info {
-    height: 20vh;
+    min-height: 20vh;
     background: var(--primary-2);
     display: flex;
     align-items: center;
