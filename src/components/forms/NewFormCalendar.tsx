@@ -9,7 +9,6 @@ import { Typography, Box } from "@mui/material";
 import dayjs from "dayjs";
 import { usePetContext } from "../../context/petContext";
 
-
 dayjs.locale("pt-br");
 
 type TFormCalendar = {
@@ -55,6 +54,7 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
               sx={{ marginBottom: 2.32 }}
             ></Typography>
             <DatePicker
+              sx={{ width: "15rem" }}
               label={labelText}
               format="DD/MM/YYYY"
               value={date ? value : null}

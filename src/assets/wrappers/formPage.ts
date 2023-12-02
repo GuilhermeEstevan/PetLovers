@@ -4,7 +4,7 @@ const Wrapper = styled.section`
   border-radius: var(--borderRadius);
   width: 90%;
   background: var(--white);
-  padding: 3rem 4rem;
+  padding: 3rem 3rem;
   box-shadow: var(--shadow-2);
   max-width: var(--max-width);
   margin: 0 auto;
@@ -111,7 +111,7 @@ const Wrapper = styled.section`
     align-items: flex-start;
     margin: 2rem 0;
   }
-
+ 
   @media (min-width: 992px) {
     .form-center {
       grid-template-columns: 1fr 1fr;

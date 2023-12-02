@@ -6,7 +6,7 @@ const Wrapper = styled.section`
   margin-top: 2rem;
   border-radius: var(--borderRadius);
   background: var(--white);
-  padding: 2rem 2rem 4rem;
+  padding: 2rem 1rem;
   box-shadow: var(--shadow-2);
   max-width: var(--max-width);
 
@@ -19,23 +19,19 @@ const Wrapper = styled.section`
   }
 
   .pet-table td {
-    padding: 8px 2px;
+    padding: 8px 8px;
     text-align: left;
     border: 1px solid var(--grey-9);
+    text-align: center;
   }
 
   .pet-table th {
-    padding: 8px 0;
-    text-align: left;
+    padding: 8px 8px;
+    text-align: center;
     border: 1px solid var(--grey-9);
     color: var(--white);
     font-weight: 400;
     background-color: var(--primary-2);
-
-    &:not(:first-child):not(:last-child) {
-      /* Apply padding to all th except the first one */
-      padding-left: 2px;
-    }
   }
 
   .pet-table tbody tr:nth-child(odd) {
@@ -52,6 +48,7 @@ const Wrapper = styled.section`
 
   .cardBtns {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
   }
 
@@ -103,7 +100,7 @@ const Wrapper = styled.section`
 
   .selected-option {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.5rem ;
     cursor: pointer;
     background: var(--primary-2);
     color: var(--white);
@@ -137,8 +134,28 @@ const Wrapper = styled.section`
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     span {
       margin-right: 5px;
+    }
+  }
+
+  @media (min-width: 500px) {
+    width: 90%;
+    padding: 2rem 2rem 4rem;
+
+    .cardBtns {
+      flex-direction: row;
+    }
+
+    .pet-table th {
+      padding: 8px 0px;
+
+      font-weight: 400;
+      &:not(:first-child):not(:last-child) {
+        /* Apply padding to all th except the first one */
+        padding-left: 2px;
+      }
     }
   }
 `;
