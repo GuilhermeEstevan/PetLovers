@@ -59,6 +59,12 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
                 field: {
                   readOnly: true,
                 },
+                inputAdornment: {
+                  position: "end",
+                  style: {
+                    marginTop: "2rem",
+                  },
+                },
               }}
               onChange={handleChangeDate}
               key={date ? value?.toString() : "null"}

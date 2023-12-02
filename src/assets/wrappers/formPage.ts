@@ -143,7 +143,7 @@ const Wrapper = styled.section`
   .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
     /* border: 1px solid var(--grey-2); */
     /* display: flex; */
-    align-items: baseline;
+    /* align-items: baseline; */
   }
 
   .calendar {
