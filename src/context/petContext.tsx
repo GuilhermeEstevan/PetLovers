@@ -79,7 +79,6 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       toast.success("Pet criado!");
     } catch (error: any) {
       console.log(error);
-      toast.error(error);
       setIsLoading(false);
     }
   };
