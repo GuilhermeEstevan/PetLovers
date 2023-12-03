@@ -1,7 +1,7 @@
 import Wrapper from "../assets/wrappers/galleryPage";
 import GalleryPhoto from "./GalleryPhoto";
 import { usePetContext } from "../context/petContext";
-import { useEffect } from "react";
+import { useEffect, } from "react";
 
 type TGalleryContainerProps = {
   petId: string;

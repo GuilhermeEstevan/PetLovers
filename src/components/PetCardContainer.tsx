@@ -120,6 +120,10 @@ const PetCardContainer = () => {
     setCurrentPage(1);
   }, [selectedServiceType]);
 
+  if (singlePet?.petCards.length === 0) {
+    return 
+  }
+
   return (
     <Wrapper>
       <table className="pet-table">

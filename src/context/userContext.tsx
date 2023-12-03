@@ -68,6 +68,7 @@ export const UserProvider = ({ children }: TUserContextProps) => {
       const updatedUser = response.data.user;
       setUser(updatedUser);
       setUserToLocalStorage(updatedUser);
+      toast.success("Alterações salvas!");
       setIsloading(false);
     } catch (error: any) {
       toast.error(error.response.data);

@@ -2,6 +2,8 @@ import Wrapper from "../assets/wrappers/galleryPhoto";
 import { IoMdDownload } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { usePetContext } from "../context/petContext";
+import { useState } from "react";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 type TGalleryPhoto = {
   image: string;
@@ -11,6 +13,8 @@ type TGalleryPhoto = {
 
 const GalleryPhoto = ({ image, imageId, petId }: TGalleryPhoto) => {
   const { deleteGalleryPhoto, isLoading } = usePetContext();
+
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const handleDeleteBtn = () => {
     deleteGalleryPhoto(petId, imageId);
@@ -57,12 +61,22 @@ const GalleryPhoto = ({ image, imageId, petId }: TGalleryPhoto) => {
           <button
             className="delete-btn"
             disabled={isLoading}
-            onClick={handleDeleteBtn}
+            onClick={() => {
+              setDeleteModalOpen(true);
+            }}
           >
             <MdDelete />
           </button>
         </div>
       </div>
+      <DeleteConfirmationModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => {
+          setDeleteModalOpen(false);
+        }}
+        onConfirm={handleDeleteBtn}
+        text="Deseja excluir a foto?"
+      />
     </Wrapper>
   );
 };

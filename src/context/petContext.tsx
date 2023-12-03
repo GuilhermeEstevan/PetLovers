@@ -23,9 +23,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [editingCardInfo, SetEditingCardInfo] = useState<TEditPetCardData | null>(
-    null
-  );
+  const [editingCardInfo, SetEditingCardInfo] =
+    useState<TEditPetCardData | null>(null);
   const [singlePet, setSinglePet] = useState<TPet | null>(null);
   const [allPets, setAllPets] = useState<TAllPets>({
     pets: [],
@@ -78,8 +77,9 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       console.log(response);
       setIsLoading(false);
       toast.success("Pet criado!");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toast.error(error);
       setIsLoading(false);
     }
   };
@@ -149,7 +149,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       );
       console.log(response);
       getSinglePet(petId);
-      toast.success("Cartão preenchido!")
+      toast.success("Cartão preenchido!");
       setIsLoading(false);
     } catch (error) {
       console.log(error);

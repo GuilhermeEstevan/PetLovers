@@ -6,6 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Typography, Box } from "@mui/material";
+import { ptBR } from "@mui/x-date-pickers/locales";
 import dayjs from "dayjs";
 import { usePetContext } from "../../context/petContext";
 
@@ -45,7 +46,11 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
     <div className="form-row calendar">
       <LocalizationProvider
         dateAdapter={AdapterDayjs}
-        localeText={{ cancelButtonLabel: "cancelar" }}
+        adapterLocale="pt-BR"
+        localeText={
+          ptBR.components.MuiLocalizationProvider.defaultProps.localeText
+        }
+        // localeText={{ cancelButtonLabel: "cancelar", datePickerToolbarTitle:"Data" }}
       >
         <DemoContainer components={["DatePicker"]}>
           <Box>
