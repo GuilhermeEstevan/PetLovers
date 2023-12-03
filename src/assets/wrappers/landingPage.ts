@@ -2,7 +2,7 @@ import styled from "styled-components";
 import puppies from "../images/bannerDogmedium.jpg";
 import petGallery from "../images/petGallery.jpg";
 import petCard from "../images/catinho.jpg";
-import adoption from "../images/adoption.jpg";
+import adoption from "../images/woman-holding-adopt-me-sign-while-sitting-cute-dogs.jpg";
 import dogFooter from "../images/cute-sweet-puppy-australianmedium.jpg";
 
 const Wrapper = styled.main`
@@ -12,7 +12,6 @@ const Wrapper = styled.main`
     height: 5rem;
     display: flex;
     align-items: center;
-    
 
     .nav-content {
       width: var(--fluid-width);
@@ -22,7 +21,6 @@ const Wrapper = styled.main`
       justify-content: center;
     }
   }
-
 
   h1 {
     font-weight: 800;
@@ -139,8 +137,9 @@ const Wrapper = styled.main`
 
   .our-services {
     margin-top: 10rem;
-    height: 30vh;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
 
     .service {
       flex: 1; /* Faz cada serviço ocupar o mesmo espaço disponível */
@@ -183,15 +182,49 @@ const Wrapper = styled.main`
       box-shadow: var(--shadow-3);
     }
 
+    .service-desc{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 20%;
+      border-radius: var(--borderRadius);
+
+      &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2); /* Cor preta com 50% de opacidade para escurecimento */
+      z-index: 1; /* Garante que a sobreposição esteja acima do conteúdo */
+    }
+    }
+
     h4 {
-      color: var(--grey-3);
-      background: white;
+      color: var(--white);
+      /* background: white; */
       font-weight: 800;
       padding: 0.4rem;
       border-radius: var(--borderRadius);
-      font-size: 0.8rem;
-      margin-top: 2rem;
+      font-size: 1.2rem;
+      margin-top: 0.8rem;
       text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 800px) {
+      flex-direction: row;
+      height: 35vh;
+      margin: 0 auto;
+      max-width: 1600px;
+
+      .petAdoption {
+        background-position: center;
+      }
     }
   }
 

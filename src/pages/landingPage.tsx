@@ -47,15 +47,21 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="our-services container">
+      <div className="our-services">
         <div className="service petCard">
-          <h4>controle de vacinas</h4>
+          <div className="service-desc">
+            <h4>controle de vacinas</h4>
+          </div>
         </div>
         <div className="service petGallery">
-          <h4>Galeria de fotos</h4>
+          <div className="service-desc">
+            <h4>Galeria de fotos</h4>
+          </div>
         </div>
         <div className="service petAdoption">
-          <h4>Seja o herói que um pet espera!</h4>
+          <div className="service-desc">
+            <h4>Seja o herói que um pet espera!</h4>
+          </div>
         </div>
       </div>
 
