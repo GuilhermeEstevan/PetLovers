@@ -27,6 +27,18 @@ const Wrapper = styled.div`
       font-size: 1rem;
     }
   }
+
+  .btn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  max-width: 31.3rem;
+  button {
+    height: 35px;
+  }
+}
 `;
 
 export default Wrapper;
