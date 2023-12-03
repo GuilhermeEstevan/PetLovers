@@ -4,12 +4,14 @@ type TDeleteConfirmationModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
+  text: string;
 };
 
 const DeleteConfirmationModal = ({
   isOpen,
   onClose,
   onConfirm,
+  text,
 }: TDeleteConfirmationModalProps) => {
   if (!isOpen) {
     return null;
@@ -18,7 +20,7 @@ const DeleteConfirmationModal = ({
   return (
     <Wrapper>
       <div className="modal-content">
-        <p>Tem certeza que deseja excluir este pet?</p>
+        <p>{text}</p>
         <div className="btn-container">
           <button className="btn btn-block btn-danger" onClick={onConfirm}>
             Sim

@@ -1,7 +1,7 @@
 /* FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bevan&display=swap");
-@import 'react-toastify/dist/ReactToastify.css';
+@import "react-toastify/dist/ReactToastify.css";
 * {
   box-sizing: border-box;
 }
@@ -264,6 +264,17 @@ p {
   color: var(--white);
 }
 
+.btn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  max-width: 31.3rem;
+  button {
+    height: 35px;
+  }
+}
 /* IMAGES */
 
 .img {
@@ -332,7 +343,6 @@ p {
   align-items: center;
   min-height: 85vh;
 }
-
 
 .Toastify-icon-color-success {
   color: pink;

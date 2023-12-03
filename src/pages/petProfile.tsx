@@ -207,6 +207,7 @@ const PetProfile = () => {
         isOpen={isDeleteModalOpen}
         onClose={() => setDeleteModalOpen(false)}
         onConfirm={handleDeleteBtn}
+        text="Tem certeza que deseja excluir este pet?"
       />
     </Wrapper>
   );
