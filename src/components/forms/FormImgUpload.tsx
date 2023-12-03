@@ -27,7 +27,7 @@ const FormImgUpload = ({ setFile, label, file }: TFormImgProps) => {
     if (!file.type.startsWith("image/")) {
       return false;
     }
-    const maxSize = 3 * 1024 * 1024;
+    const maxSize = 5 * 1024 * 1024;
     if (file.size > maxSize) {
       return false;
     }
