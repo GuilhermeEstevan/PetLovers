@@ -22,6 +22,7 @@ const AddPetPage = () => {
     singlePet,
     pageLoading,
     setPageLoading,
+    isLoading,
   } = usePetContext();
   const { breed, color, name, species, gender } = pet;
 
@@ -164,8 +165,9 @@ const AddPetPage = () => {
             type="submit"
             className="btn btn-block submmit-btn"
             onClick={handleSubmit}
+            disabled={isLoading}
           >
-            {isEditing ? "Editar" : "Criar"}
+            {isEditing ? "Editar" : isLoading ? "Aguarde..." : "Criar"}
           </button>
         </div>
       </form>
