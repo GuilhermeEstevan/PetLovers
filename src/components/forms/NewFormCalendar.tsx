@@ -63,6 +63,7 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
               label={labelText}
               format="DD/MM/YYYY"
               value={date ? value : null}
+              closeOnSelect={false}
               disableFuture
               slotProps={{
                 field: {
@@ -74,9 +75,10 @@ const NewFormCalendar = ({ date, setDate, labelText }: TFormCalendar) => {
                     marginTop: "2rem",
                   },
                 },
+                actionBar: { actions: ["cancel", "accept"] },
               }}
               onChange={handleChangeDate}
-              key={date ? value?.toString() : "null"}
+              // key={date ? value?.toString() : "null"}
             />
           </Box>
         </DemoContainer>

@@ -38,13 +38,15 @@ const RegisterPage = () => {
       toast.error("Preencha todos os campos");
       return;
     }
+    const lowercasedEmail = email.toLowerCase();
+    setEmail(lowercasedEmail);
 
     if (!isMember) {
-      registerUser({ email, name, password });
+      registerUser({ email: lowercasedEmail, name, password });
       return;
     }
 
-    loginUser({ email, password });
+    loginUser({ email: lowercasedEmail, password });
   };
 
   const handleForgotPassword = () => {

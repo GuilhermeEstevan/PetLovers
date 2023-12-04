@@ -22,7 +22,9 @@ const ResetPassword = () => {
       return;
     }
 
-    sendResetEmailPassword(email);
+    const lowercasedEmail = email.toLowerCase();
+
+    sendResetEmailPassword(lowercasedEmail);
   };
 
   return (
