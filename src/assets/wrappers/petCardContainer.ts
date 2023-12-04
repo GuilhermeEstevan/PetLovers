@@ -54,12 +54,12 @@ const Wrapper = styled.section`
 
   .edit-btn {
     background-color: transparent;
-    color: var(--green-dark);
+    color: var(--grey-3);
     box-shadow: none;
   }
   .delete-btn {
     background-color: transparent;
-    color: var(--red-dark);
+    color: var(--red-light);
     box-shadow: none;
   }
 
