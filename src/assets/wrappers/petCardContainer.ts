@@ -9,11 +9,13 @@ const Wrapper = styled.section`
   padding: 2rem 1rem;
   box-shadow: var(--shadow-2);
   max-width: var(--max-width);
+  color: var(--grey-2);
+  font-weight: 500;
 
   .pet-table {
     width: 100%;
     border-collapse: collapse;
-    border: 3px solid #ddd;
+    border: 3px solid var(--grey-8);
     text-transform: capitalize;
     box-shadow: var(--shadow-3);
   }

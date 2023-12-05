@@ -82,6 +82,8 @@ export type TCreatePetCardData = {
   description: string;
   date: string;
   doseNumber?: string;
+  medicationType?: string;
+  frequency?: string;
 };
 
 export type TPetCardData = {
@@ -91,6 +93,7 @@ export type TPetCardData = {
   description: string;
   date: string;
   vaccineInfo?: TVaccineInfo;
+  medicationInfo?: TMedicationInfo;
 };
 
 export type TEditPetCardData = {
@@ -100,12 +103,20 @@ export type TEditPetCardData = {
   description: string;
   date: string;
   doseNumber?: string;
+  medicationType?: string;
+  frequency?: string;
 };
 
 export type TVaccineInfo = {
   vaccineType: string;
   doseNumber: string;
   nextDueDate: string;
+};
+
+export type TMedicationInfo = {
+  medicationType: string;
+  frequency: string;
+  nextMedicationDate: string | undefined;
 };
 
 export type TaddGalleryPhotoData = {

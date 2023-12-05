@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { usePetContext } from "../context/petContext";
 import { TCreatePetCardData } from "../interface/petInterface";
 import FormRowSelect from "./forms/FormRowSelect";
-import { Vaccines, HealthExams } from "../utils/vaccinesAndExams";
+import { Vaccines, HealthExams, Frequency } from "../utils/CardLists";
 import moment from "moment";
 import { toast } from "react-toastify";
 
@@ -27,11 +27,12 @@ const PetCardForm = () => {
   const handleJobInput = (e: any) => {
     const name = e.target.name;
     const value = e.target.value;
+    console.log(name, value);
 
     if (name === "serviceType") {
       setSelectedServiceType(value);
 
-      if (value === "banho" || value === "tosa") {
+      if (value === "banho" || value === "tosa" || value === "medicamento") {
         setPetCard({
           ...petCard,
           [name]: value,
@@ -82,7 +83,9 @@ const PetCardForm = () => {
     if (
       !petCard.serviceType ||
       !petCard.date ||
-      (petCard.serviceType === "vacina" && !petCard.doseNumber)
+      (petCard.serviceType === "vacina" && !petCard.doseNumber) ||
+      (petCard.serviceType === "medicamento" &&
+        (!petCard.medicationType || !petCard.frequency))
     ) {
       toast.error("Preencha os Campos !");
       return;
@@ -90,7 +93,7 @@ const PetCardForm = () => {
 
     const formattedDate = moment(petCard.date, "DD/MM/YYYY").toISOString();
     if (isEditing) {
-      console.log(editingCardInfo);
+      console.log(petCard);
 
       const id = editingCardInfo?._id;
       if (!id) return console.log("Id não encontrado!");
@@ -98,7 +101,7 @@ const PetCardForm = () => {
       clearForm();
       return;
     }
-    console.log(petCard.date);
+    console.log(petCard);
 
     createPetCard({ ...petCard, date: formattedDate }, petId);
     clearForm();
@@ -119,6 +122,8 @@ const PetCardForm = () => {
         description: editingCardInfo?.description,
         date: editingCardInfo.date,
         doseNumber: editingCardInfo.doseNumber,
+        frequency: editingCardInfo.frequency,
+        medicationType: editingCardInfo.medicationType,
       });
     }
   }, [isEditing]);
@@ -133,30 +138,53 @@ const PetCardForm = () => {
             value={petCard.serviceType}
             handleChange={handleJobInput}
             labelText="Serviço"
-            list={["vacina", "exame", "tosa", "banho"]}
+            list={["vacina", "exame", "tosa", "banho", "medicamento"]}
           />
-          {selectedServiceType !== "banho" &&
-            selectedServiceType !== "tosa" && (
-              <FormRowSelect
-                name="service"
-                value={petCard.service}
-                handleChange={handleJobInput}
-                labelText={
-                  selectedServiceType === "vacina"
-                    ? "Vacina"
-                    : selectedServiceType === "exame"
-                    ? "Exame"
-                    : ""
-                }
-                list={
-                  selectedServiceType === "vacina"
-                    ? Object.values(Vaccines)
-                    : selectedServiceType === "exame"
-                    ? Object.values(HealthExams)
-                    : []
-                }
-              />
-            )}
+          {/* TIPO DE VACINA OU EXAME */}
+          {(selectedServiceType === "vacina" ||
+            selectedServiceType === "exame") && (
+            <FormRowSelect
+              name="service"
+              value={petCard.service}
+              handleChange={handleJobInput}
+              labelText={
+                selectedServiceType === "vacina"
+                  ? "Vacina"
+                  : selectedServiceType === "exame"
+                  ? "Exame"
+                  : ""
+              }
+              list={
+                selectedServiceType === "vacina"
+                  ? Object.values(Vaccines)
+                  : selectedServiceType === "exame"
+                  ? Object.values(HealthExams)
+                  : []
+              }
+            />
+          )}
+          {/* DESCRIÇÃO DO MEDICAMENTO */}
+          {selectedServiceType === "medicamento" && (
+            <FormRow
+              type="text"
+              name="medicationType"
+              value={petCard.medicationType || ""}
+              handleChange={handleJobInput}
+              labelText="Tipo De Medicamento"
+              placeholder="Vermífugo, Antipulgas..."
+            />
+          )}
+          {/* TEMPO DE DOSAGEM PARA MEDICAMENTO */}
+          {selectedServiceType === "medicamento" && (
+            <FormRowSelect
+              name="frequency"
+              value={petCard.frequency || ""}
+              handleChange={handleJobInput}
+              labelText="Periodicidade"
+              list={[...Frequency]}
+            />
+          )}
+          {/* SE SERVIÇO FOR VACINA, PEDIR DOSE, CASO NÃO PEDIR DESCRIÇÃO*/}
           {selectedServiceType === "vacina" ? (
             <FormRowSelect
               name="doseNumber"

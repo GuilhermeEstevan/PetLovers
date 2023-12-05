@@ -10,7 +10,9 @@ type TCardInfo = {
   date: string;
   id: string;
   petId?: string;
-  doseNumber: string | undefined;
+  doseNumber?: string;
+  frequency?: string;
+  medicationType?: string;
 };
 
 const TableRow = ({
@@ -21,6 +23,8 @@ const TableRow = ({
   id,
   petId,
   doseNumber,
+  medicationType,
+  frequency,
 }: TCardInfo) => {
   const { deletePetCard, SetEditingCardInfo, setIsEditing } = usePetContext();
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -41,13 +45,17 @@ const TableRow = ({
       description,
       date,
       doseNumber,
+      medicationType,
+      frequency,
     });
   };
 
   return (
     <>
       <tr>
-        <td>{service}</td>
+        <td>
+          {serviceType === "medicamento" ? medicationType : service}
+        </td>
         <td>
           {service.startsWith("Vacina")
             ? doseNumber === "reforço anual"

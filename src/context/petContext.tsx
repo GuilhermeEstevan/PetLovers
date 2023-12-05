@@ -163,6 +163,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       getSinglePet(petId);
+      toast.info("Informação deletada com sucesso");
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -185,6 +186,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       );
       getSinglePet(petId);
       setIsEditing(false);
+      toast.success("Alterações salvas!");
       console.log(response);
     } catch (error) {
       setIsEditing(false);

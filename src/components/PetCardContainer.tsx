@@ -66,6 +66,8 @@ const PetCardContainer = () => {
           {currentPetCards?.map((item: TPetCardData) => {
             const { serviceType, service, date, description, _id } = item;
             const doseNumber = item.vaccineInfo?.doseNumber;
+            const frequency = item.medicationInfo?.frequency;
+            const medicationType = item.medicationInfo?.medicationType;
             const formattedDate = format(new Date(date), "dd/MM/yyyy");
 
             return (
@@ -78,6 +80,8 @@ const PetCardContainer = () => {
                 description={description}
                 date={formattedDate}
                 doseNumber={doseNumber}
+                frequency={frequency}
+                medicationType={medicationType}
               />
             );
           })}
@@ -121,7 +125,7 @@ const PetCardContainer = () => {
   }, [selectedServiceType]);
 
   if (singlePet?.petCards.length === 0) {
-    return 
+    return;
   }
 
   return (
@@ -154,6 +158,9 @@ const PetCardContainer = () => {
                     </div>
                     <div onClick={() => handleServiceTypeChange("tosa")}>
                       Tosa
+                    </div>
+                    <div onClick={() => handleServiceTypeChange("medicamento")}>
+                      medicamento
                     </div>
                   </div>
                 )}

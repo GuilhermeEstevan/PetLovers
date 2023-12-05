@@ -1,9 +1,5 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-// import { useState } from "react";
-// import { IoEye, IoEyeOff } from "react-icons/io5";
-// import { IconButton } from "@mui/material";
-// import InputAdornment from "@mui/material/InputAdornment";
 
 type TFormRow = {
   type: string;
@@ -22,12 +18,6 @@ const FormRow = ({
   labelText,
   placeholder,
 }: TFormRow) => {
-  // const [showPassword, setShowPassword] = useState(false);
-
-  // const toggleShowPassword = () => {
-  //   setShowPassword(!showPassword);
-  // };
-
   return (
     <Box className="form-row">
       <TextField
@@ -40,23 +30,7 @@ const FormRow = ({
         placeholder={placeholder}
         onChange={handleChange}
         style={{ width: "100%" }}
-        // InputProps={
-        //   type === "password"
-        //     ? {
-        //         endAdornment: (
-        //           <InputAdornment position="end">
-        //             <IconButton
-        //               aria-label="toggle password visibility"
-        //               onClick={toggleShowPassword}
-        //               onMouseDown={(e) => e.preventDefault()}
-        //             >
-        //               {showPassword ? <IoEyeOff /> : <IoEye />}
-        //             </IconButton>
-        //           </InputAdornment>
-        //         ),
-        //       }
-        //     : undefined
-        // }
+       
       />
     </Box>
   );

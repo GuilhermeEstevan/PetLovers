@@ -32,3 +32,16 @@ export enum HealthExams {
   THYROID_FUNCTION_TEST = "Teste de Função da Tireoide",
   CANCER_SCREENING = "Rastreamento de Câncer",
 }
+
+export const Frequency = [
+  "5 dias",
+  "10 dias",
+  "15 dias",
+  "1 mês",
+  "2 meses",
+  "3 meses",
+  "6 meses",
+  "1 ano",
+  "última dose",
+  "dose única",
+];
