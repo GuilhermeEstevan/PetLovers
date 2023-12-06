@@ -56,7 +56,7 @@ const Wrapper = styled.section`
 
   .edit-btn {
     background-color: transparent;
-    color: var(--grey-3);
+    color: #ffda3d;
     box-shadow: none;
   }
   .delete-btn {
