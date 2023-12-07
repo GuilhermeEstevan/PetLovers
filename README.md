@@ -16,4 +16,4 @@ o **Pet Lovers** é uma plataforma inovadora desenvolvida para proporcionar aos 
 
 Deploy: https://petloverswebsite.netlify.app
 
-![image](https://github.com/GuilhermeEstevan/Jobster_TS/assets/115093310/ecaa7abb-bbad-46d2-9236-8144fe8752e0)
+![image](https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/72594b6f-d8d2-4c9e-a8ab-6cd44d848695)
