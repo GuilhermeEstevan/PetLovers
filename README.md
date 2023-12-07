@@ -16,7 +16,6 @@ Além disso, a plataforma oferece uma galeria onde os usuários podem compartilh
 
 - _Sistema de Alerta por E-mail_: Um sistema de alerta envia lembretes aos usuários, garantindo que estejam sempre cientes de datas importantes, como a necessidade de aplicar doses de medicamentos, vacinas ou realizar outros cuidados específicos.
 
-Deploy: https://petloverswebsite.netlify.app
 
 ### 🛠 Tecnologias Utilizadas
 
@@ -29,8 +28,11 @@ Deploy: https://petloverswebsite.netlify.app
 - [x] <span style="color:green;">Cloudinary</span>
 - [x] <span style="color:green;">AWS</span>
 
+### Deploy da Aplicação
 
+A plataforma Pet Lovers está disponível para acesso em [https://petloverswebsite.netlify.app](https://petloverswebsite.netlify.app).
 
+<br>
 
 <img src="https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/70d807e9-1f14-41e6-bfa1-c08fd2df5633" alt="Descrição da Imagem" width="800" height="800">
 
