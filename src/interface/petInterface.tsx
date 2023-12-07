@@ -2,7 +2,7 @@ import { SetStateAction } from "react";
 
 export type TPetContext = {
   isLoading: boolean;
-  getAllPets: () => void;
+  getAllPets: (page?:number) => void;
   allPets: TAllPets;
   createPet: (data: TCreatePetData) => void;
   editPet: (data: TCreatePetData, petId: string) => void;

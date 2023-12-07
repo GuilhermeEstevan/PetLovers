@@ -289,6 +289,7 @@ const Wrapper = styled.main`
 
     a {
       font-size: 2rem;
+      margin: 0.5rem 0;
       text-decoration: none;
     }
 

@@ -1,17 +1,21 @@
 import Wrapper from "../assets/wrappers/petsPage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Pet from "../components/Pet";
 import { usePetContext } from "../context/petContext";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Loading from "../components/Loading";
 import adoptImg from "../assets/images/cute-dog-playing-with-woman-shelter-adoption.jpg";
 
 const PetsPage = () => {
   const { getAllPets, allPets, isLoading } = usePetContext();
+  const [currentPage, setCurrentPage] = useState(1);
   const pets = allPets.pets;
 
+  const numOfPages = allPets.numOfPages;
+
   useEffect(() => {
-    getAllPets();
-  }, []);
+    getAllPets(currentPage);
+  }, [currentPage]);
 
   if (isLoading) {
     return (
@@ -20,6 +24,14 @@ const PetsPage = () => {
       </Wrapper>
     );
   }
+
+  const prevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
   return (
     <Wrapper>
@@ -33,7 +45,10 @@ const PetsPage = () => {
               <h3>Nenhum pet cadastrado...</h3>
               <h4>Que tal adotar um ?</h4>
               <div className="adoption-photo">
-                <a href="https://www.instagram.com/anjinhos4patas" target="blank">
+                <a
+                  href="https://www.instagram.com/anjinhos4patas"
+                  target="blank"
+                >
                   <img src={adoptImg} alt="" />
                 </a>
               </div>
@@ -57,6 +72,25 @@ const PetsPage = () => {
             })
           )}
         </div>
+        {numOfPages > 1 && (
+          <div className="page-controller">
+            <button
+              onClick={prevPage}
+              disabled={currentPage === 1}
+              className="btn page-btn"
+            >
+              <FaArrowLeft />
+            </button>
+            <span className="current-page">Página {currentPage}</span>
+            <button
+              onClick={nextPage}
+              className="btn page-btn"
+              disabled={currentPage === allPets.numOfPages}
+            >
+              <FaArrowRight />
+            </button>
+          </div>
+        )}
       </div>
     </Wrapper>
   );

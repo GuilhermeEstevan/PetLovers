@@ -42,10 +42,10 @@ export const PetProvider = ({ children }: TPetContextProps) => {
     species: "",
   });
 
-  const getAllPets = async () => {
+  const getAllPets = async (page?: number) => {
     try {
       setIsLoading(true);
-      const response = await customFetch.get("/pets", {
+      const response = await customFetch.get(`/pets?page=${page}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -56,6 +56,29 @@ const Wrapper = styled.section`
     flex-direction: column;
   }
 
+  .page-controller {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--grey-5);
+  }
+
+  .page-btn {
+    margin: 0.2rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-4);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .page-btn:disabled {
+    background-color: #ddd; /* Cor de fundo quando desativado */
+    color: #999; /* Cor do texto quando desativado */
+  }
+
+  .current-page {
+    padding: 0.4rem 1rem;
+  }
+
   .empty-pet {
     display: flex;
     text-align: center;
