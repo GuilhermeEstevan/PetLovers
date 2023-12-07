@@ -20,5 +20,3 @@ Deploy: https://petloverswebsite.netlify.app
 ![image](https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/70d807e9-1f14-41e6-bfa1-c08fd2df5633)
 
 
-
-<video src="petlovers-google-chrome-2023-12-07-11-50-16_JvmxCgre.mp4" controls title="Title"></video>
