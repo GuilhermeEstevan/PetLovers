@@ -16,7 +16,21 @@ o **Pet Lovers** é uma plataforma inovadora desenvolvida para proporcionar aos 
 
 Deploy: https://petloverswebsite.netlify.app
 
+### Tecnologias Utilizadas
 
-![image](https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/70d807e9-1f14-41e6-bfa1-c08fd2df5633)
+- [x] <span style="color:green;">React</span>
+- [x] <span style="color:green;">Styled Components</span>
+- [x] <span style="color:green;">TypeScript</span>
+- [x] <span style="color:green;">Node.js</span>
+- [x] <span style="color:green;">MongoDB</span>
+- [x] <span style="color:green;">Cloudinary</span>
+- [x] <span style="color:green;">AWS</span>
 
+
+
+
+<img src="https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/70d807e9-1f14-41e6-bfa1-c08fd2df5633" alt="Descrição da Imagem" width="800" height="800">
+
+
+https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/d4252bb6-c256-4df0-b4e9-799dc6ea6120
 
