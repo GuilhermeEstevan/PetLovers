@@ -24,10 +24,10 @@ Deploy: https://petloverswebsite.netlify.app
 - [x] <span style="color:green;">Styled Components</span>
 - [x] <span style="color:green;">TypeScript</span>
 - [x] <span style="color:green;">Node.js</span>
+- [x] <span style="color:green;">Express</span>
 - [x] <span style="color:green;">MongoDB</span>
 - [x] <span style="color:green;">Cloudinary</span>
 - [x] <span style="color:green;">AWS</span>
-
 
 
 
