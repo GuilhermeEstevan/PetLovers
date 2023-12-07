@@ -16,8 +16,9 @@ o **Pet Lovers** é uma plataforma inovadora desenvolvida para proporcionar aos 
 
 Deploy: https://petloverswebsite.netlify.app
 
+
 ![image](https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/70d807e9-1f14-41e6-bfa1-c08fd2df5633)
 
 
 
-<video src="PetLovers%20-%20Google%20Chrome%202023-12-07%2011-50-16.mp4" controls title="Title"></video>
+<video src="petlovers-google-chrome-2023-12-07-11-50-16_JvmxCgre.mp4" controls title="Title"></video>
