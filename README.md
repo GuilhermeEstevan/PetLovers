@@ -18,3 +18,6 @@ Deploy: https://petloverswebsite.netlify.app
 
 ![image](https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/70d807e9-1f14-41e6-bfa1-c08fd2df5633)
 
+![Carteirinha do Pet](image.png)
+
+![Galeria do Pet](image-1.png)
