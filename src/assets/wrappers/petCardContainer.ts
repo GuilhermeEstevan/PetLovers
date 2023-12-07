@@ -43,6 +43,8 @@ const Wrapper = styled.section`
     background-color: var(--primary-8);
   }
 
+ 
+
   .pet-table th:last-child {
     width: 1rem;
     text-align: center;
@@ -101,6 +103,7 @@ const Wrapper = styled.section`
   }
 
   .selected-option {
+    min-width: 6.5rem;
     width: 100%;
     padding: 0.5rem ;
     cursor: pointer;
