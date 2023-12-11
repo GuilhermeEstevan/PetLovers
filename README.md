@@ -34,7 +34,17 @@ A plataforma Pet Lovers está disponível para acesso em [https://petloverswebsi
 
 <br>
 
-<img src="https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/70d807e9-1f14-41e6-bfa1-c08fd2df5633" alt="Descrição da Imagem" width="800" height="800">
+<h1 align="center">
+    <img alt="landing page" src="https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/5501984a-27bb-4547-99fb-395bc7c1c660">
+</h1>
+
+
+## Alerta de E-mail
+
+<h1 align="center">
+    <img alt="alerta e-mail" src="https://github.com/GuilhermeEstevan/PetLovers/assets/115093310/7b73964f-cf6a-4915-b4f5-ca64e32b5e8f">
+</h1>
+
 
 
 ### Vídeo Representativo
