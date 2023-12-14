@@ -14,9 +14,17 @@ const ProfilePage = () => {
     phone: user?.phone || "",
   });
 
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
   const handleChange = (e: any) => {
     const name = e.target.name;
     let value = e.target.value;
+
+    if (name === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValid = emailRegex.test(value);
+      setIsEmailValid(isValid);
+    }
 
     if (name === "phone") {
       // Limita o campo de telefone a 11 dígitos
@@ -37,6 +45,11 @@ const ProfilePage = () => {
 
     if (!name || !lastName || !email || !phone) {
       toast.error("preencha todos campos");
+      return;
+    }
+
+    if (!isEmailValid) {
+      toast.error("Formato de e-mail inválido");
       return;
     }
 

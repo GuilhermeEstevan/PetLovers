@@ -15,15 +15,25 @@ const RegisterPage = () => {
   const toggleMember = () => {
     setIsMember(!isMember);
   };
-
+  // NAME
   const [name, setName] = useState("");
   const handleName = (e: any) => {
     setName(e.target.value);
   };
+  // EMAIL
   const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
   const handleEmail = (e: any) => {
-    setEmail(e.target.value);
+    const enteredEmail = e.target.value;
+    setEmail(enteredEmail);
+
+    // Email format validation using a regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(enteredEmail);
+    setIsEmailValid(isValid);
   };
+  // PASSWORD
   const [password, setPassword] = useState("");
   const handlePassword = (e: any) => {
     setPassword(e.target.value);
@@ -38,6 +48,12 @@ const RegisterPage = () => {
       toast.error("Preencha todos os campos");
       return;
     }
+
+    if (!isEmailValid) {
+      toast.error("Formato de email inválido");
+      return;
+    }
+
     const lowercasedEmail = email.toLowerCase();
     setEmail(lowercasedEmail);
 
