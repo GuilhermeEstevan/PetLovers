@@ -24,7 +24,7 @@ const PetCardForm = () => {
     "vacina"
   );
 
-  const handleJobInput = (e: any) => {
+  const handleJobInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
     console.log(name, value);

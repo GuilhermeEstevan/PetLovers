@@ -47,16 +47,18 @@ const PetCardContainer = () => {
       );
     }
 
-    filteredPetCards = filteredPetCards.sort((a, b): any => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
+    filteredPetCards = filteredPetCards.sort(
+      (a: TPetCardData, b: TPetCardData) => {
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
 
-      if (sortOrder === "asc") {
-        return dateA - dateB;
-      } else {
-        return dateB - dateA;
+        if (sortOrder === "asc") {
+          return dateA - dateB;
+        } else {
+          return dateB - dateA;
+        }
       }
-    });
+    );
     const currentPetCards = filteredPetCards.slice(startIndex, endIndex);
 
     return {

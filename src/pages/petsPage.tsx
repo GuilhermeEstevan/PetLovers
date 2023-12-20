@@ -7,7 +7,7 @@ import Loading from "../components/Loading";
 import adoptImg from "../assets/images/cute-dog-playing-with-woman-shelter-adoption.jpg";
 
 const PetsPage = () => {
-  const { getAllPets, allPets, isLoading } = usePetContext();
+  const { getAllPets, allPets, isLoading, setSinglePetError, singlePetError } = usePetContext();
   const [currentPage, setCurrentPage] = useState(1);
   const pets = allPets.pets;
 
@@ -15,7 +15,8 @@ const PetsPage = () => {
 
   useEffect(() => {
     getAllPets(currentPage);
-  }, [currentPage]);
+    setSinglePetError(false); // Quando ocorrer o erro o usuário é navegado para home e desfeito o erro
+  }, [currentPage, singlePetError]);
 
   if (isLoading) {
     return (

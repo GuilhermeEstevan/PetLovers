@@ -2,7 +2,7 @@ import Wrapper from "../assets/wrappers/formPage";
 import { usePetContext } from "../context/petContext";
 import { TaddGalleryPhotoData } from "../interface/petInterface";
 // import FormGalleryUpload from "./forms/FormGalleryUpload";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import FormGalleryUpload from "./forms/FormGalleryUpload";
 
@@ -15,7 +15,7 @@ const AddPhotoContainer = ({ petId }: TAddPhotoContainerProps) => {
     usePetContext();
   const [file, setFile] = useState<File | null>(null);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!file) {
       return toast.error("Nenhuma imagem foi selecionada!");

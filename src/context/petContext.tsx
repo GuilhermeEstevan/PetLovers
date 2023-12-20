@@ -22,6 +22,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const token = user?.token;
   const [isLoading, setIsLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(false);
+  const [singlePetError, setSinglePetError] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editingCardInfo, SetEditingCardInfo] =
     useState<TEditPetCardData | null>(null);
@@ -117,6 +118,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
   const getSinglePet = async (petId: string) => {
     try {
       setIsLoading(true);
+      setSinglePetError(false);
       const response = await customFetch.get(`/pets/getPet/${petId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -128,6 +130,7 @@ export const PetProvider = ({ children }: TPetContextProps) => {
       setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setSinglePetError(true);
       setIsLoading(false);
     }
   };
@@ -253,6 +256,8 @@ export const PetProvider = ({ children }: TPetContextProps) => {
     <PetContext.Provider
       value={{
         isLoading,
+        singlePetError,
+        setSinglePetError,
         getAllPets,
         allPets,
         createPet,

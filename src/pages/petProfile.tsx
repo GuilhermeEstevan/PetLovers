@@ -20,6 +20,7 @@ const PetProfile = () => {
     editPet,
     deletePet,
     uploadImageToCloudinary,
+    singlePetError,
   } = usePetContext();
   const genderOptions = ["macho", "fêmea"];
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -131,11 +132,14 @@ const PetProfile = () => {
 
   useEffect(() => {
     getSinglePet(petId);
+    if (singlePetError) {
+      navigate("/");
+    }
     return () => {
       setPageLoading(true);
       setSinglePet(null);
     };
-  }, []);
+  }, [singlePetError]);
 
   return (
     <Wrapper>
