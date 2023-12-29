@@ -69,7 +69,7 @@ const Wrapper = styled.aside`
     }
 
     .sidebar-img {
-      position: fixed; 
+      position: fixed;
       bottom: 0;
       left: 0;
       margin-bottom: -1rem;
@@ -78,6 +78,15 @@ const Wrapper = styled.aside`
 
       img {
         width: 300px;
+        display: none;
+      }
+    }
+
+    @media (min-height: 700px) {
+      .sidebar-img {
+        img {
+          display: block;
+        }
       }
     }
   }

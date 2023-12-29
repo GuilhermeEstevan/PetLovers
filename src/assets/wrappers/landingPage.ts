@@ -38,6 +38,7 @@ const Wrapper = styled.main`
   .banner {
     background: #454f5b;
     height: 60vh;
+    min-height: 30rem;
     background-image: url(${puppies});
     background-size: cover;
     background-position: center;
@@ -95,6 +96,7 @@ const Wrapper = styled.main`
 
   .info {
     height: 35vh;
+    min-height: 20rem;
     text-align: center;
 
     .info-text {
@@ -137,6 +139,7 @@ const Wrapper = styled.main`
 
   .our-services {
     margin-top: 10rem;
+    min-height: 30rem;
     height: 100vh;
     display: flex;
     flex-direction: column;
